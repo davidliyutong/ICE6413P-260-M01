@@ -1,0 +1,6 @@
+[submodule "materials/network"]
+	path = materials/network
+	url = https://github.com/rebirthmonkey/network.git
+[submodule "materials/k8s"]
+	path = materials/k8s
+	url = https://github.com/rebirthmonkey/k8s.git
