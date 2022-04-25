@@ -1,0 +1,64 @@
+site_name: K8S
+site_url: https://docs.davidliyutong.top/
+docs_dir: k8s
+nav:
+  - Home: README.md
+  - Summary: summary.md
+  - Installation:
+    - 01_installation/README.md
+    - kubeadm: 01_installation/kubeadm/README.md
+    - minikube: 01_installation/minikube/README.md
+  - Container:
+    - Basics:
+      - namespace: 10_container/10_basics/10_namespace.md
+      - cgroup: 10_container/10_basics/20_cgroup.md
+      - rootfs: 10_container/10_basics/30_rootfs.md
+    - Docker: 
+      - 10_container/20_Docker/README.md
+      - Image: 
+          - 10_container/20_Docker/10_image/README.md
+          - Advanced: 10_container/20_Docker/10_image/advanced.md
+      - Runtime: 10_container/20_Docker/15_runtime/README.md
+      - Volume: 10_container/20_Docker/20_volume/README.md
+      - Network: 10_container/20_Docker/25_network/README.md
+      - Dockerfile: 10_container/20_Docker/30_dockerfile/README.md
+      - Lab: 
+        - Wordpress: 
+          - 10_container/20_Docker/80_lab/10_wordpress/README.md
+        - Python server: 
+          - 10_container/20_Docker/80_lab/12_python-server/README.md
+        - Front/Backend: 
+          - 10_container/20_Docker/80_lab/14_frontbackend/README.md
+      - Topics:
+          - 10_container/20_Docker/90_topics/README.md
+          - dind: 10_container/20_Docker/90_topics/dind/README.md
+      - Docker-Compose: 
+          - 10_container/20_Docker/95_docker-compose/README.md
+
+# - [about.md, About]
+theme: 
+  name: readthedocs
+  # name: material
+  features:
+      - content.code.annotate
+      - navigation.indexes
+      - navigation.collapse
+
+markdown_extensions:
+  - attr_list
+  - md_in_html
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.arithmatex:
+      generic: true
+  - def_list
+  - pymdownx.tasklist:
+      custom_checkbox: true
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
