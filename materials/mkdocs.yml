@@ -34,10 +34,27 @@ nav:
           - dind: 10_container/20_Docker/90_topics/dind/README.md
       - Docker-Compose: 
           - 10_container/20_Docker/95_docker-compose/README.md
+  - Objects:
+      - 20_objects/README.md
+      - Config: 20_objects/01_config/README.md
+      - Cluster Node: 20_objects/02_cluster-node/README.md
+      - Label & Annotaion: 20_objects/03_label&annotation/README.md
+      - Namespace: 20_objects/04_namespace/README.md
+      - Pod: 20_objects/05_pod/README.md
+      - Workload: 20_objects/10_workload/README.md
+      - Service: 20_objects/15_service/README.md
+      - Storage:
+          - 20_objects/20_storage/README.md
+          - Ceph: 20_objects/20_storage/ceph/README.md
+          - CSI: 20_objects/20_storage/csi/README.md
+      - Network: 
+          - 20_objects/25_network/README.md
+          - ingress: 20_objects/25_network/30_ingress/README.md
+          - Network Polocy: 20_objects/25_network40_network-policy/README.md
 
 # - [about.md, About]
 theme: 
-  name: readthedocs
+  name: material
   # name: material
   features:
       - content.code.annotate
