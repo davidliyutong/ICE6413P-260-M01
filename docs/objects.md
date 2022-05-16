@@ -3057,7 +3057,7 @@ ingress-nginx-defaultbackend-8657d58dfc-hvx7s   1/1     Running   0          22m
 
 我们首先创建一系列的自签名证书
 
-```bash title="boostrap_keys.sh"
+```bash title="bootstrap_keys.sh"
 #!/bin/bash
 cd 12_svc2/
 openssl genrsa -out ca.key 1024
@@ -3281,7 +3281,7 @@ kubectl delete -f ./12_svc2/ingress.yaml
 
 #### 实验 - HTTPS-Ingress-HTTP
 
-证书的生成已经在`boostrap_keys.sh`中完成了
+证书的生成已经在`bootstrap_keys.sh`中完成了
 
 ```shell
 openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout 14_svc3/ic.key \
