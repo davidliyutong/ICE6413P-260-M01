@@ -1,5 +1,7 @@
 # Container Experiment
 
+指南：
+
 [Lab Container](https://github.com/rebirthmonkey/k8s/tree/master/10_container){ .md-button }
 
 ## Basics - namespace
@@ -145,9 +147,12 @@ iotop
 将进程的PID加入cgroup
 
 ```shell
-[root@host] $ $(cat test.pid) | sudo tee -a /sys/fs/cgroup/blkio/test/tasks
+[root@host] $ cat test.pid | sudo tee -a /sys/fs/cgroup/blkio/test/tasks
 sudo iotop -aod 0.1
 ```
+
+!!! warning
+    在磁盘性能高的主机上，执行该命令时先前创建的读取进程可能已经退出。建议先设置好组的限速，再重新运行dd命令，并立刻将其添加到限制组内
 
 我们可以看到，对设备/dev/sda的读取受到了限制
 
@@ -155,7 +160,7 @@ sudo iotop -aod 0.1
 
 全部的命令
 
-![Limited read](img/20220424122927.png)  
+![Limited read](img/20220424123024.png)  
 
 删除cgroup，结束进程
 
@@ -611,6 +616,8 @@ volumes:
 [speit@host] $ docker container run --name mysql -d --net python-server -v mysql:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=P@ssw0rd  mysql:5.7
 ```
 
+这些命令将会创建一个名为mysql的容器（通过`--name mysql`），并将mysql数据卷映射到容器内的/var/lib/mysql/
+
 !!! note
     通过`docker network inspect python-server | grep IPv4`，我们可以获取到`mysql`容器的地址为`192.168.32.2`，
 
@@ -628,9 +635,9 @@ Password:
 !!! warning
     有些情况下，需要在MySQL客户端执行两句MySQL查询将root@localhost授权，否则会报错
 
-    ```mysql
-    GRANT ALL PRIVILEGES ON *.* TO 'root'@'localhost';
-    FLUSH PRIVILEGES;
+    ```sql
+    mysql> GRANT ALL PRIVILEGES ON *.* TO 'root'@'localhost';
+    mysql> FLUSH PRIVILEGES;
     ```
 
 ![Creating MySQL server](img/20220424233029.png)
@@ -638,10 +645,10 @@ Password:
 编译python-server镜像
 
 ```shell
-cd docker
-[speit@host] $ docker build -t python-server:0.1 . &> /dev/null
-[speit@host] $ docker image ls | grep python-server
-cd ..
+[speit@host] $ cd docker
+[speit@host/docker] $ docker build -t python-server:0.1 . &> /dev/null
+[speit@host/docker] $ docker image ls | grep python-server
+[speit@host] $ cd ..
 ```
 
 !!! note
@@ -664,6 +671,21 @@ cd ..
 ```shell
 [speit@host] $ mysql -u root -p -h 192.168.32.2 < db1_tbl1.sql
 ```
+
+!!! note
+
+    这步操作完成的工作是启动mysql客户端，连接到位于`192.168.32.2`的主机，并导入`db1_tbl1.sql`文件。该文件存在于宿主机中，因此命令需要在宿主机中执行
+
+    也可以将该文件用`docker cp`命令拷贝到容器内，然后使用容器内的客户端执行
+
+    ```shell
+    [speit@host] $ docker cp db1_tbl1.sql $MYSQL_CT_ID:/var/db1_tbl1.sql # 拷贝到容器内的/var/db1_tbl1.sql
+    [speit@host] $ docker exec -it $MYSQL_CT_ID /bin/bash
+    [root@ct] $ mysql -u root -p < /var/db1_tbl1.sql # 路径与之前保持一致
+    Password:
+    ```
+
+    其中`$MYSQL_CT_ID`为容器的ID
 
 检查web server 的状态，发现其正常工作了
 
@@ -711,22 +733,24 @@ cd ..
 
 ## Docker in docker
 
-> 给出的例子有误，需要添加一行`RUN chmod +x /data/init.sh`
+!!! warning
 
-  ```shell
-  FROM centos:7
+    给出的例子有误，需要添加一行`RUN chmod +x /data/init.sh`
 
-  RUN yum update -y \
-      && yum install -y iptables \
-      && yum clean all
+    ```shell title="Dockerfile"
+    FROM centos:7
 
-  RUN mkdir -p /data && groupadd docker
-  ADD ["./files/docker.tar.xz", "/usr/local/bin/"]
-  COPY ["./scripts/init.sh", "/data/init.sh"]
-  RUN chmod +x /data/init.sh
+    RUN yum update -y \
+        && yum install -y iptables \
+        && yum clean all
 
-  CMD ["/data/init.sh"]
-  ```
+    RUN mkdir -p /data && groupadd docker
+    ADD ["./files/docker.tar.xz", "/usr/local/bin/"]
+    COPY ["./scripts/init.sh", "/data/init.sh"]
+    RUN chmod +x /data/init.sh
+
+    CMD ["/data/init.sh"]
+    ```
 
 ![Docker in docker is running](img/20220425002928.png)
 

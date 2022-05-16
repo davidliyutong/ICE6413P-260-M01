@@ -4,8 +4,11 @@ docs_dir: docs
 nav:
   - Home: README.md
   # - Summary: summary.md
-  - Installation:  installation.md
-  - Cluster: cluster.md
+  - Installation: 
+    - installation.md
+    - Docker: docker.md
+    - Minikube: minikube.md
+    - Cluster: cluster.md
   - Container: container.md
   - Objects: objects.md
 
@@ -62,6 +65,11 @@ plugins:
   #     cover_title: Lab Report
   #     cover_subtitle: ICE6413P-260-M01
   #     two_columns_level: 3
+
+extra:
+  analytics:
+    provider: google
+    property: G-WZKCHK54MZ
 
 extra_javascript:
   - javascripts/mathjax.js
