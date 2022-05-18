@@ -46,7 +46,13 @@ helm search repo stable
 
     大部分数据库应用都会产生PVC。因此需要先准备一个storageClass，否则需要手动创建PV来回应PVC
 
+!!! tip
+
+    许多本地客户端接入命令会导致kubectl端口转发任务作为后台任务创建。可以用`jobs`命令列出用户的后台任务，然后使用`kill %[n]`等命令结束（`n`为后台任务的编号）
+
 ### MariaDB
+
+MariaDB 是和MySQL兼容的关系型数据库
 
 ```shell
 helm install my-mariadb --set global.storageClass=nfs-client bitnami/mariadb
@@ -60,14 +66,6 @@ helm uninstall my-mariadb
 !!! warning
     `--set global.storageClass=nfs-client`指定了使用nfs-client作为storageClass
     `global.storageClass`的默认参数可以通过`helm inspect all stable/mysql`获得
-
-    如果是使用NFS存储，取决于网络的水平
-    ```shell
-    helm install my-mysql --set global.storageClass=nfs-client \
-        --set primary.readinessProbe.enabled=false,primary.livenessProbe.enabled=false \
-        --set secondary.readinessProbe.enabled=false,secondary.livenessProbe.enabled=false \
-        bitnami/mysql
-    ```
 
 可以通过`kubectl get secret`获取密码
 
@@ -111,6 +109,8 @@ MariaDB [(none)]> show databases;
 
 ### MongoDB
 
+MongoDB 是一个基于分布式文件存储的数据库
+
 ```shell
 helm install my-mongodb --set persistence.storageClass=nfs-client stable/mongodb
 helm uninstall my-mongodb
@@ -148,6 +148,8 @@ db.dropDatabase() # 删除db
 ![Pod Access MongoDB](img/20220518154205.png)
 
 ### Redis
+
+Redis 是一个key-value 存储系统，是跨平台的非关系型数据库
 
 ```shell
 helm install my-redis --set slave.persistence.storageClass=nfs-client,master.persistence.storageClass=nfs-client stable/redis
@@ -189,7 +191,9 @@ get aaa
 
 ![Pod Access Redis](img/20220518154431.png)
 
-### Rabbitmq
+### RabbitMQ
+
+RabbitMQ是实现了高级消息队列协议（AMQP）的开源消息代理软件
 
 ```shell
 helm install my-rabbitmq --set persistence.storageClass=nfs-client stable/rabbitmq
@@ -224,12 +228,14 @@ export RABBITMQ_COOKIE=$(kubectl get secret --namespace default my-rabbitmq -o j
 
 !!! tip
 
-    上述的命令会导致端口转发任务作为后台任务创建。可以用`jobs`命令列出用户的后台任务，然后使用`kill %[n]`等命令结束（`n`为后台任务的编号）
+    上述的命令会导致端口转发任务作为后台任务创建
 
 ![Local Access RabbitMQ](img/20220518154700.png)  
 ![RabbitMQ Management UI](img/20220518154737.png)
 
 ### Kafka
+
+Kafka 是一种分布式的，基于发布 / 订阅的消息系统。主要设计目标如下： 以时间复杂度为 O(1) 的方式提供消息持久化能力
 
 Kafka 不需要持久化
 
@@ -252,6 +258,8 @@ helm uninstall my-kafka
 ![Kafka Management UI](img/20220518155240.png)
 
 ### ElasticSearch
+
+Elasticsearch 是一个分布式、RESTful 风格的搜索和数据分析引擎，能够解决不断涌现出的各种用例
 
 ```shell
 helm install my-es --set global.storageClass=nfs-client bitnami/elasticsearch
