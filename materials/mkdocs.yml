@@ -50,7 +50,26 @@ nav:
       - Network: 
           - 20_objects/25_network/README.md
           - ingress: 20_objects/25_network/30_ingress/README.md
-          - Network Polocy: 20_objects/25_network40_network-policy/README.md
+          - Network Polocy: 20_objects/25_network/40_network-policy/README.md
+  - Components:
+      - 30_components/README.md
+      - aaa: 30_components/aaa/README.md
+      - cni: 30_components/cni/README.md
+      - kube-apiserver: 30_components/kube-apiserver/README.md
+      - kube-controller-mgr: 30_components/kube-controller-mgr/README.md
+      - kube-dns: 30_components/kube-dns/README.md
+      - kube-proxy: 30_components/kube-proxy/README.md
+      - kube-scheduler: 30_components/kube-scheduler/README.md
+      - kubelet: 30_components/kubelet/README.md
+      - metric-server: 30_components/metric-server/README.md
+      - prometheus: 30_components/prometheus/README.md
+  - Helm:
+      - 50_helm/README.md
+  - Operator:
+      - 60_operator/README.md
+  - Lab:
+      - 90_lab/README.md
+      - wordpress: 90_lab/wordpress/README.md
 
 # - [about.md, About]
 theme: 
