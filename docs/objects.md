@@ -2316,7 +2316,7 @@ NFS是非常常见的网络存储协议。Kubernetes 不包含内部 NFS 驱动�
 ```shell
 git clone https://github.com/kubernetes-sigs/nfs-subdir-external-provisioner
 cd nfs-subdir-external-provisioner
-git checkout nfs-subdir -external-provisioner-4.0.16 # 使用4.0.16
+git checkout nfs-subdir-external-provisioner-4.0.16 # 使用4.0.16
 ```
 
 根据官网的提示，修改并创建对应的rbac角色
@@ -2374,7 +2374,7 @@ spec:
 ```
 
 !!! tip
-    `k8s.gcr.io/sig-storage/nfs-subdir-external-provisioner`镜像可能无法轻松下载。可以用`davidliyutong/nfs-subdir-external-provisioner`替代
+    `k8s.gcr.io/sig-storage/nfs-subdir-external-provisioner`镜像可能无法轻松下载。可以用`registry.hub.docker.com/davidliyutong/nfs-subdir-external-provisioner`替代
 
 ```yaml title="class.yaml"
 apiVersion: storage.k8s.io/v1
@@ -2402,7 +2402,21 @@ kubectl apply -f deploy/deployment.yaml
 kubectl apply -f deploy/class.yaml
 ```
 
-`nfs-subdir-external-provisioner`项目提供了一个测试用例。该测试用例由`test-
+!!! tip
+
+    设置一个storageClass为默认
+
+    ```shell
+    kubectl patch storageclass <storageClass> -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"true"}}}'
+    ```
+
+    取消一个storageClass的默认设置
+
+    ```shell
+    kubectl patch storageclass <storageClass> -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"false"}}}'
+    ```
+
+`nfs-subdir-external-provisioner`项目提供了一个测试用例。该测试用例由`test-claim.yaml`和`test-pod.yaml`构成
 
 ```yaml title="test-claim.yaml"
 kind: PersistentVolumeClaim
@@ -2445,6 +2459,10 @@ spec:
 解释:
 
 该测试用例将申请一个容量为1MiB的PVC，并且在这个PVC挂载到容器的`/mnt`中。容器将尝试在`/mnt`中创建一个`SUCCESS`文件
+
+```shell
+kubectl apply -f deploy/test-claim.yaml -f deploy/test-pod.yaml
+```
 
 ![CI Test](img/20220510161831.png)
 
