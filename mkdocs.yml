@@ -11,6 +11,9 @@ nav:
     - Cluster: cluster.md
   - Container: container.md
   - Objects: objects.md
+  - Components: components.md
+  - Helm: helm.md
+  - Wordpress: wordpress.md
 
 # # - [about.md, About]
 # theme: 
