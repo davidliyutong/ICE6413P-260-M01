@@ -188,9 +188,22 @@ nodes:
 [speit@all] $ sudo apt-mark hold kubelet kubeadm kubectl
 ```
 
+指定版本
+
+```shell
+[speit@all] $ sudo apt-get install -y kubelet=1.23.6-00 kubeadm=1.23.6-00  kubectl=1.23.6-00 
+```
+
 !!! note
 
     锁定版本可以避免一些兼容性问题
+
+### 二进制安装工具
+
+!!! note
+    这不等同于二进制安装集群
+
+也可以用二进制安装kubeadm、kubectl和kubelet的指定版本。参考[install-kubeadm](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/)
 
 ## 安装集群
 

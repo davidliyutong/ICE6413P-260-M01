@@ -180,7 +180,7 @@ flowchart LR
 [node0] $ kubectl config view --minify --raw --output 'jsonpath={..user.client-key-data}' | base64 -d > client.key
 ```
 
-我们将产生的`server.crt`，`client.crt`，`client.key`下载到本地，例如`.kube/certs/k8s-jcloud`目录，然后配置config
+我们将产生的`server.crt`，`client.crt`，`client.key`下载到本地，例如`~/.kube/certs/k8s-jcloud`目录，然后配置config
 
 ```shell
 kubectl config set-cluster k8s-jcloud --server=https://10.119.11.113:6443 --certificate-authority=certs/k8s-jcloud/server.crt
@@ -268,7 +268,7 @@ openssl x509 -req -in $USER.csr -CA $ROOT_CA_CRT -CAkey $ROOT_CA_KEY -CAcreatese
 
 运行该脚本，将产生`test.csr`，`test.key`，`test.crt`三个文件，我们需要`test.key`, `test.crt`用于客户端认证
 
-使用`kubectl config`工具，或直接编辑`.kube/config`文件，新增该用户和对应的Context。方法如上节所属
+使用`kubectl config`工具，或直接编辑`~/.kube/config`文件，新增该用户和对应的Context。方法如上节所属
 
 ```yaml title=".kube/config"
 - context:
@@ -807,7 +807,9 @@ kubectl get pods -w
 [node0] $ curl $POD_IP:8080/healthz
 ```
 
-![Liveness Container](img/20220501113411.png)
+![Liveness Container](img/20220521100411.png)
+
+可以看到，pod不时重启，curl得到的内容时而OK时而错误
 
 !!! note
 
