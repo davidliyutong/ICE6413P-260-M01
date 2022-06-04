@@ -60,6 +60,7 @@ minikube start
 
 !!! tip
     如果出现连接问题导致无法下载镜像的问题，可以添加`--image-repository`参数执行镜像
+    当前一次`minikube start`失败的时候，需要输入`minikube delete`删除minikube容器并且删除`~/.minikube`文件夹
 
     ```shell
     minikube start --image-mirror-country='cn' --driver docker --image-repository=registry.cn-hangzhou.aliyuncs.com/google_containers
