@@ -77,11 +77,12 @@ kubectl apply -f wordpress-service.yml
 ![Create PVs](img/20220518171540.png)
 
 我们用一系列命令检查安装情况
-kubectl get pods
-kubectl get pvc
-kubectl get pv
-kubectl get ingress
-kubectl get svc
+
+- `kubectl get pods`
+- `kubectl get pvc`
+- `kubectl get pv`
+- `kubectl get ingress`
+- `kubectl get svc`
 
 ![Inspect Wordpress](img/20220518171800.png)
 

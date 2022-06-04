@@ -46,6 +46,10 @@ helm search repo stable
 
     大部分数据库应用都会产生PVC。因此需要先准备一个storageClass，否则需要手动创建PV来回应PVC
 
+!!! note
+
+    在Minikube上，大部分的Helm Chart都不需要指定storageClass
+
 !!! tip
 
     许多本地客户端接入命令会导致kubectl端口转发任务作为后台任务创建。可以用`jobs`命令列出用户的后台任务，然后使用`kill %[n]`等命令结束（`n`为后台任务的编号）
@@ -61,7 +65,7 @@ helm uninstall my-mariadb
 
 !!! note
 
-    `helm uninstall`命令不会释放PVC，需要手动释放。（bitnami/mysql）
+    `helm uninstall`命令不会释放PVC，需要手动释放。（bitnami/mariadb）
 
 !!! warning
     `--set global.storageClass=nfs-client`指定了使用nfs-client作为storageClass

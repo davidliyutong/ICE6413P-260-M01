@@ -953,6 +953,7 @@ kubectl label nodes $NODE_ID zone=xxx
 kubectl apply -f 12_replicaset2-node-selector.yaml
 kubectl label nodes $NODE_ID zone- # unlabel zone
 kubectl label nodes $NODE_ID zone=yyy
+kubectl delete -f 12_replicaset2-node-selector.yaml # re-deploy
 kubectl apply -f 12_replicaset2-node-selector.yaml
 # all the pods are pending since they cannot find a node
 kubectl label nodes $NODE_ID zone- # unlabel zone
@@ -1227,9 +1228,9 @@ curl 10.119.11.103:8889
 curl 10.119.11.113:8889
 [node0] $ curl clusterIP:clusterPort  
 [node0] $ curl node2:80
-[node0] $ curl note2:8889
-[node0] $ ping clusterIP
-[node0] $ ping serviceIP
+[node0] $ curl node2:8889
+[node0] $ ping podIP
+[node0] $ ping serviceIP(clusterIP)
 ```
 
 !!! note
@@ -1401,7 +1402,7 @@ service5-endpoints的ClusterIP为`10.103.23.79`，登陆集群的节点，然后
 
 ![Test endpoint](img/20220501213353.png)  
 
-可以看到，我们为运行在`10.64.13.10:8000`上的python web server创建了`10.103.23.79:80`接口。在工程实践时，我们可以很快的设定一个Service的接口，然后分发给前端团对。他们可以在此基础上开发前端应用。
+可以看到，我们为运行在`10.64.13.10:8000`上的python web server创建了`10.103.23.79:80`接口。在工程实践时，我们可以很快的设定一个Service的接口，然后分发给前端团队。他们可以在此基础上开发前端应用。
 
 !!! tip
 
@@ -2386,9 +2387,10 @@ metadata:
 provisioner: k8s-sigs.io/nfs-subdir-external-provisioner 
 # 匹配 deployment's env PROVISIONER_NAME
 parameters:
-  pathPattern: "${.PVC.namespace}/${.PVC.annotations.nfs.io/storage-path}" 
+  # pathPattern: "${.PVC.namespace}-${.PVC.name}" 
   # waits for nfs.io/storage-path annotation, default is empty string.
-  onDelete: delete # Or retain
+  # onDelete: delete
+  # archiveOnDelete: false
 ```
 
 | Name            | Description                                                                                           |
