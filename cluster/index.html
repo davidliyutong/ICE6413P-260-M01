@@ -1,0 +1,1348 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://report.ice6413p.space/cluster/">
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.0">
+    
+    
+      
+        <title>Cluster - K8S Experiment</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.fd896c8a.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+
+  <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-WZKCHK54MZ"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&gtag("event","search",{search_term:this.value})}),"undefined"!=typeof location$&&location$.subscribe(function(e){gtag("config","G-WZKCHK54MZ",{page_path:e.pathname})})})</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-WZKCHK54MZ"></script>
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#k8s" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="K8S Experiment" class="md-header__button md-logo" aria-label="K8S Experiment" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            K8S Experiment
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Cluster
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/davidliyutong/ICE6413P-260-M01.git" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href=".." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../installation/" class="md-tabs__link md-tabs__link--active">
+        Installation
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../container/" class="md-tabs__link">
+      Container
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../objects/" class="md-tabs__link">
+      Objects
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../components/" class="md-tabs__link">
+      Components
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../helm/" class="md-tabs__link">
+      Helm
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../wordpress/" class="md-tabs__link">
+      Wordpress
+    </a>
+  </li>
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="K8S Experiment" class="md-nav__button md-logo" aria-label="K8S Experiment" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    K8S Experiment
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/davidliyutong/ICE6413P-260-M01.git" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Installation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Installation" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Installation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../installation/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../docker/" class="md-nav__link">
+        Docker
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../minikube/" class="md-nav__link">
+        Minikube
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Cluster
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Cluster
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    总结
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    确保服务器资源
+  </a>
+  
+    <nav class="md-nav" aria-label="确保服务器资源">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    服务器配置
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    令服务器互相连接
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#docker" class="md-nav__link">
+    安装Docker
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#swap" class="md-nav__link">
+    关闭防火墙和swap
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    安装相关工具
+  </a>
+  
+    <nav class="md-nav" aria-label="安装相关工具">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cfsslcfssljson" class="md-nav__link">
+    cfssl/cfssljson
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kubectl-kubeadm-kubelete" class="md-nav__link">
+    kubectl / kubeadm / kubelete
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    二进制安装工具
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    安装集群
+  </a>
+  
+    <nav class="md-nav" aria-label="安装集群">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    安装控制平面/主节点
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    添加其他节点
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    配置网络
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    测试
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    其他的实用配置
+  </a>
+  
+    <nav class="md-nav" aria-label="其他的实用配置">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rbac" class="md-nav__link">
+    RBAC
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    使用配置文件初始化
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ipvs" class="md-nav__link">
+    开启IPVS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tlsbootstrap" class="md-nav__link">
+    启用TLSBootstrap
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    添加命令补全
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#helm" class="md-nav__link">
+    安装Helm
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metallb" class="md-nav__link">
+    安装MetalLB
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    珍爱生命，远离交大云
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    References
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../container/" class="md-nav__link">
+        Container
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../objects/" class="md-nav__link">
+        Objects
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../components/" class="md-nav__link">
+        Components
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../helm/" class="md-nav__link">
+        Helm
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wordpress/" class="md-nav__link">
+        Wordpress
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+  <a href="https://github.com/davidliyutong/ICE6413P-260-M01.git/edit/master/docs/cluster.md" title="Edit this page" class="md-content__button md-icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+
+
+<h1 id="k8s">创建高可用的K8S集群</h1>
+<p>本章节记录了一个有3个节点的K8S集群的配置过程</p>
+<h2 id="_1">总结</h2>
+<blockquote>
+<p>对于K8S这个快速发展的项目，如果不注意参考资料的版本，是要吃大亏的</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Verison</th>
+<th>Ref</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>kubeadm</td>
+<td>1.23.6</td>
+<td>---</td>
+</tr>
+<tr>
+<td>kubectl</td>
+<td>1.23.6</td>
+<td>---</td>
+</tr>
+<tr>
+<td>kubelet</td>
+<td>1.23.6</td>
+<td>---</td>
+</tr>
+<tr>
+<td>metrics-server</td>
+<td>0.6.1</td>
+<td>---</td>
+</tr>
+<tr>
+<td>calico</td>
+<td>3.22.2</td>
+<td>---</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_2">确保服务器资源</h2>
+<p>本小节描述了集群资源的情况</p>
+<h3 id="_3">服务器配置</h3>
+<p>我们假设有三台互相连接的节点，这些节点在一个交换机域下。三个节点的主机名、IP地址描述如下</p>
+<pre class="mermaid"><code>graph LR
+    B[Internet] --&gt; A[(vSwitch&lt;br&gt;192.168.1.0/24)]
+    subgraph Hypervisor
+        direction TB
+        A --&gt; C1[ICE-k8s-machines-node0&lt;br&gt;192.168.1.134]
+        A --&gt; C2[ICE-k8s-machines-node1&lt;br&gt;192.168.1.135]
+        A --&gt; C3[ICE-k8s-machines-node2&lt;br&gt;192.168.1.136]
+    end</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nt">nodes</span><span class="p">:</span><span class="w"></span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">node0</span><span class="p">:</span><span class="w"></span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">      </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;ICE-k8s-machines-node0&#39;</span><span class="w"></span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">      </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;192.168.1.134&#39;</span><span class="w"></span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">node1</span><span class="p">:</span><span class="w"></span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">      </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;ICE-k8s-machines-node1&#39;</span><span class="w"></span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">      </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;192.168.1.135&#39;</span><span class="w"></span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">node2</span><span class="p">:</span><span class="w"></span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">      </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;ICE-k8s-machines-node2&#39;</span><span class="w"></span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">      </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;192.168.1.136&#39;</span><span class="w"></span>
+</code></pre></div>
+<p>三台节点均为x86虚拟机，安装Ubuntu 20.04.3 LTS操作系统，配置了2GB内存。<code>node0</code>将作为控制平面所在的节点</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>必须确保<code>product_uuid</code>的唯一性，可以用<code>sudo cat /sys/class/dmi/id/product_uuid</code>检查</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><code>hostnamectl</code> 可以修改主机名</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>为了访问节点，我们在所有节点上部署统一的基于公私钥的免密登陆，命令参考:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="o">[</span>speit@node0<span class="o">]</span> $ ssh-keygen
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="o">[</span>speit@node0<span class="o">]</span> $ ssh-copy-id -i .ssh/id_rsa.pub speit@node1
+</code></pre></div>
+</div>
+<h3 id="_4">令服务器互相连接</h3>
+<p>我们编辑节点的<code>/etc/hosts</code> 来让它们能够通过主机名互相访问。节点0上的配置如下：</p>
+<div class="highlight"><span class="filename">/etc/hosts</span><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>127.0.0.1       localhost
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>127.0.1.1       ICE-k8s-machines-node0
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>192.168.1.134   ICE-k8s-machines-node0
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>192.168.1.135   ICE-k8s-machines-node1
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>192.168.1.136   ICE-k8s-machines-node2
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>可以通过<code>ping</code>命令来测试主机间的连通性</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>应当使用<code>ifconfig</code>配置static IP，并使得节点间可以通过默认路由通讯</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>确保<code>br_netfilter</code>模块已经加载。可以通过<code>lsmod | grep br_netfilter</code>检查。使用<code>sudo modprobe br_netfilter</code>主动加载</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>$ lsmod <span class="p">|</span> grep br_netfilter
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>br_netfilter           <span class="m">28672</span>  <span class="m">0</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>bridge                <span class="m">249856</span>  <span class="m">1</span> br_netfilter
+</code></pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>如果是复制的虚拟机，则必须确保三台主机的MAC地址的唯一性，可以用<code>ip link</code>或者<code>ifconfig -a</code>获取mac地址。</p>
+</div>
+<h3 id="docker">安装Docker</h3>
+<p>我们在所有节点安装Docker。这一部分参照<a href="https://github.com/davidliyutong/ICE6405P-260-M01/blob/main/scripts/ubuntu/20.04/setup-docker.sh">github.com/davidliyutong/ICE6405P-260-M01</a></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="o">[</span>speit@all<span class="o">]</span> $ curl -fsSL https://get.docker.com -o get-docker.sh
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="o">[</span>speit@all<span class="o">]</span> $ sudo sh get-docker.sh
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="o">[</span>speit@all<span class="o">]</span> $ sudo usermod -aG docker <span class="nv">$USER</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="o">[</span>speit@all<span class="o">]</span> $ newgrp docker
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="o">[</span>speit@all<span class="o">]</span> $ sudo systemctl restart docker
+</code></pre></div>
+<h3 id="swap">关闭防火墙和swap</h3>
+<p>关闭<code>ufw</code>、<code>SELinux</code>等所有的防火墙，但是不要关闭<code>iptables</code>，因为<code>iptables</code>会被用来作流量转发</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>使用<code>sudo ufw disable</code>关闭<code>ufw</code>防火墙</p>
+</div>
+<p>修改<code>/etc/stab</code>，将<code>/swap</code>有关的配置注释从而关闭swap。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="o">[</span>speit@all<span class="o">]</span> $ sudo vim /etc/fstab
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul>
+<li><code>swapoff -a</code> 可以临时做到这一点</li>
+<li><code>6443</code>端口被用来作集群间通讯，需要确保不被占用。使用<code>lsof -i | grep 6443</code>确认，如果没有结果则为不占用</li>
+</ul>
+</div>
+<h2 id="_5">安装相关工具</h2>
+<p>我们需要安装以下工具：</p>
+<ul>
+<li><code>cfssl</code>/<code>cfssljson</code>: Cloudflare's SSL tool</li>
+<li><code>kubectl</code>: 用来与集群通信的命令行工具</li>
+<li><code>kubeadm</code>: 用来初始化集群的指令</li>
+<li><code>kubelet</code>: 在集群中的每个节点上用来启动 Pod 和容器等</li>
+</ul>
+<h3 id="cfsslcfssljson">cfssl/cfssljson</h3>
+<p><a href="https://github.com/cloudflare/cfssl/releases">cloudflare/cfssl</a>仓库提供了编译好的二进制下载。以安装<code>v1.6.1</code>为例：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="o">[</span>speit@node0<span class="o">]</span> $ wget https://github.com/cloudflare/cfssl/releases/download/v1.6.1/cfssl_1.6.1_linux_amd64 <span class="se">\</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>                     -O cfssl
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="o">[</span>speit@node0<span class="o">]</span> $ wget https://github.com/cloudflare/cfssl/releases/download/v1.6.1/cfssljson_1.6.1_linux_amd64 <span class="se">\</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>                     -O cfssljson
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>这里下载的是针对linux/amd64平台的二进制工具，如果平台不同则需要修改</p>
+</div>
+<p>使用install命令安装这些工具</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="o">[</span>speit@all<span class="o">]</span> $ sudo install ./cfssl /usr/local/bin/
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="o">[</span>speit@all<span class="o">]</span> $ sudo install ./cfssljson /usr/local/bin/
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>这些工具可以不必安装在集群的节点上，而是可以部署在本地。证书生成后，再将其上传</p>
+</div>
+<h3 id="kubectl-kubeadm-kubelete">kubectl / kubeadm / kubelete</h3>
+<p>安装必要的工具（理论上kubectl只需要在主节点/控制平面所在节点进行）</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="o">[</span>speit@all<span class="o">]</span> $ sudo apt-get update
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="o">[</span>speit@all<span class="o">]</span> $ sudo apt-get install -y apt-transport-https ca-certificates curl
+</code></pre></div>
+<p>添加仓库签名密钥</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="o">[</span>speit@all<span class="o">]</span> $ sudo curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg <span class="se">\</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>                        https://mirrors.aliyun.com/kubernetes/apt/doc/apt-key.gpg 
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>删除<code>/usr/share/keyrings/kubernetes-archive-keyring.gpg</code>可以删除该密钥</p>
+</div>
+<p>添加仓库</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="o">[</span>speit@all<span class="o">]</span> $ <span class="nb">echo</span> <span class="s2">&quot;deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://mirrors.aliyun.com/kubernetes/apt/ kubernetes-xenial main&quot;</span> <span class="p">|</span> sudo tee /etc/apt/sources.list.d/kubernetes.list
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>删除<code>/etc/apt/sources.list.d/kubernetes.list</code>文件可以删除该仓库</p>
+</div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="o">[</span>speit@all<span class="o">]</span> $ sudo apt-get update
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="o">[</span>speit@all<span class="o">]</span> $ sudo apt-get install -y kubelet kubeadm kubectl
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="o">[</span>speit@all<span class="o">]</span> $ sudo apt-mark hold kubelet kubeadm kubectl
+</code></pre></div>
+<p>指定版本</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="o">[</span>speit@all<span class="o">]</span> $ sudo apt-get install -y <span class="nv">kubelet</span><span class="o">=</span><span class="m">1</span>.23.6-00 <span class="nv">kubeadm</span><span class="o">=</span><span class="m">1</span>.23.6-00  <span class="nv">kubectl</span><span class="o">=</span><span class="m">1</span>.23.6-00 
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>锁定版本可以避免一些兼容性问题</p>
+</div>
+<h3 id="_6">二进制安装工具</h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>这不等同于二进制安装集群</p>
+</div>
+<p>也可以用二进制安装kubeadm、kubectl和kubelet的指定版本。参考<a href="https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/">install-kubeadm</a></p>
+<h2 id="_7">安装集群</h2>
+<p>本小节描述了安装集群的情况</p>
+<h3 id="_8">安装控制平面/主节点</h3>
+<p>由于网络建设的原因，<code>k8s.gcr.io</code>在国内访问速度极慢，需要配置镜像加速。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>sudo kubeadm init --image-repository registry.aliyuncs.com/google_containers <span class="se">\</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>                  --apiserver-advertise-address <span class="nv">$IP</span> <span class="se">\</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>                  --pod-network-cidr<span class="o">=</span><span class="m">10</span>.233.0.0/16 <span class="se">\</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code>registry.aliyuncs.com/google_containers</code>这个Repo其实是一个用户同步的。本人也同步了部分google的镜像源于<code>registry.hub.docker.com/davidliyutong</code>，可以使用这个源替换</p>
+</div>
+<ul>
+<li><code>--apiserver-advertise-address</code> 为证书IP，最好设成节点的公网IP以便远程访问</li>
+<li><code>--pod-network-cidr</code> 为Pod分配<code>CIDR</code>，不能和主机的任何子网冲突</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><code>kubeadm config images pull --image-repository registry.aliyuncs.com/google_containers</code>可以提前拉取镜像</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>如果出现报错：cgroup不一致，则需要添加<code>"exec-opts": ["native.cgroupdriver=systemd"]</code>到<code>/etc/docker/daemon.json</code></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="w">    </span><span class="nt">&quot;&quot;</span><span class="p">:</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="w">    </span><span class="nt">&quot;exec-opts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;native.cgroupdriver=systemd&quot;</span><span class="p">],</span><span class="w"></span>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="w">    </span><span class="nt">&quot;&quot;</span><span class="p">:</span><span class="s2">&quot;&quot;</span><span class="w"></span>
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p>令Docker以systemd为cgroup driver（kubelete的默认设置）</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>如果安装中出现错误，则需要执行<code>kubeadm reset</code>重置集群</p>
+</div>
+<p><img alt="Successfully Deployed" src="../img/20220426220826.png" /></p>
+<h3 id="_9">添加其他节点</h3>
+<p>在其他节点上运行kubeadm加入集群</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>sudo kubeadm join <span class="m">192</span>.168.1.134:6443 --token <span class="nv">$TOKEN</span> <span class="se">\</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>        --discovery-token-ca-cert-hash <span class="nv">$HASH</span>
+</code></pre></div>
+<ul>
+<li><code>192.168.1.134</code>为主节点IP</li>
+<li><code>6443</code>为默认端口</li>
+<li><code>$TOKEN</code>为之前主节点初始化后输出的token</li>
+<li><code>$HASH</code>为之前主节点初始化后输出的hash</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>token会在24小时后过期，因此需要及时执行节点加入操作，超时则需要重新生成token</p>
+<p>生成token的命令</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="o">[</span>speit@node0<span class="o">]</span> $ kubeadm token create
+</code></pre></div>
+<p>生成cat-cert-hash的命令（需要在控制平面节点执行）</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="o">[</span>speit@node0<span class="o">]</span> $ openssl x509 -pubkey -in /etc/kubernetes/pki/ca.crt <span class="p">|</span> openssl rsa -pubin -outform der <span class="m">2</span>&gt;/dev/null <span class="p">|</span> <span class="se">\</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="o">[</span>speit@node0<span class="o">]</span> $ openssl dgst -sha256 -hex <span class="p">|</span> sed <span class="s1">&#39;s/^.* //&#39;</span>
+</code></pre></div>
+</div>
+<p><img alt="Successfully Joined" src="../img/20220426221003.png" /></p>
+<p>根据提示，如果要以普通用户的身份使用集群，需要执行下列函数将<code>admin.conf</code>拷贝到用户的当前目录下，<strong>并赋予正确的权限</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="o">[</span>speit@node0<span class="o">]</span> $ mkdir -p <span class="nv">$HOME</span>/.kube
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="o">[</span>speit@node0<span class="o">]</span> $ sudo cp -i /etc/kubernetes/admin.conf <span class="nv">$HOME</span>/.kube/config
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="o">[</span>speit@node0<span class="o">]</span> $ sudo chown <span class="k">$(</span>id -u<span class="k">)</span>:<span class="k">$(</span>id -g<span class="k">)</span> <span class="nv">$HOME</span>/.kube/config
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="o">[</span>speit@node0<span class="o">]</span> $ <span class="nb">echo</span> <span class="s2">&quot;export KUBECONFIG=</span><span class="nv">$HOME</span><span class="s2">/.kube/config&quot;</span> &gt;&gt; <span class="nv">$PROFILE</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code>$PROFILE</code>为终端的配置文件，例如ZSH的配置文件为<code>$HOME/.zshrc</code></p>
+</div>
+<p>如果是root用户，则需要执行以下命令</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="o">[</span>root@node0<span class="o">]</span> $ <span class="nb">export</span> <span class="nv">KUBECONFIG</span><span class="o">=</span>/etc/kubernetes/admin.conf
+</code></pre></div>
+<h3 id="_10">配置网络</h3>
+<p>本次安装的calico版本是v3.22.2</p>
+<p>现在，<code>kubectl get nodes</code>应该能看到所有的node，但他们没有Ready，这是因为没有配置网路插件</p>
+<p>下载并应用calico网络插件</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="o">[</span>speit@node0<span class="o">]</span> $ wget https://docs.projectcalico.org/manifests/calico.yaml -O
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>网上有各种参考<a href="https://projectcalico.docs.tigera.io/archive/v3.7/getting-started/kubernetes/installation/calico">Installing Calico for policy and networking</a>的博客认为需要执行<code>sed -i -e "s?192.168.0.0/16?$POD_CIDR?g" calico.yaml</code>将IP替换，实测最新版是不需要的。只要在kubeadm初始化的时候指定了<code>--pod-network-cidr=x.x.x.x/y</code></p>
+</div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="o">[</span>speit@node0<span class="o">]</span> $ kubectl apply -f calico.yaml
+</code></pre></div>
+<p>可以安装<code>calicoctl</code>这个二进制工具</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="o">[</span>speit@node0<span class="o">]</span> $ curl -L https://github.com/projectcalico/calico/releases/download/v3.22.2/calicoctl-linux-amd64 -o calicoctl
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="o">[</span>speit@node0<span class="o">]</span> $ sudo install calicoctl /usr/local/bin
+</code></pre></div>
+<p><code>calicoctl node status</code>可以查看节点的状态</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="o">[</span>speit@node0<span class="o">]</span> $ calicoctl node status
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>Calico process is running.
+<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>
+<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a>IPv4 BGP status
+<a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a>+--------------+-------------------+-------+----------+-------------+
+<a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a><span class="p">|</span> PEER ADDRESS <span class="p">|</span>     PEER TYPE     <span class="p">|</span> STATE <span class="p">|</span>  SINCE   <span class="p">|</span>    INFO     <span class="p">|</span>
+<a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a>+--------------+-------------------+-------+----------+-------------+
+<a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a><span class="p">|</span> <span class="m">10</span>.64.13.11  <span class="p">|</span> node-to-node mesh <span class="p">|</span> up    <span class="p">|</span> <span class="m">07</span>:39:33 <span class="p">|</span> Established <span class="p">|</span>
+<a id="__codelineno-23-9" name="__codelineno-23-9" href="#__codelineno-23-9"></a><span class="p">|</span> <span class="m">10</span>.64.13.12  <span class="p">|</span> node-to-node mesh <span class="p">|</span> up    <span class="p">|</span> <span class="m">07</span>:39:32 <span class="p">|</span> Established <span class="p">|</span>
+<a id="__codelineno-23-10" name="__codelineno-23-10" href="#__codelineno-23-10"></a>+--------------+-------------------+-------+----------+-------------+
+<a id="__codelineno-23-11" name="__codelineno-23-11" href="#__codelineno-23-11"></a>
+<a id="__codelineno-23-12" name="__codelineno-23-12" href="#__codelineno-23-12"></a>IPv6 BGP status
+<a id="__codelineno-23-13" name="__codelineno-23-13" href="#__codelineno-23-13"></a>No IPv6 peers found.
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>如果系统中有NetworkManager（例如Ubuntu），需要配置NetworkManager以免对calico产生干扰。最佳实践是使用<code>apt-get remove network-manager</code>卸载</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>删除calico需要以下步骤</p>
+<ul>
+<li><code>kubectl  delete -f calico.yaml</code>可以删除calico的部署</li>
+<li>删除节点的tunl0设备<code>modprobe -r ipip</code></li>
+<li>删除<code>/etc/cni/net.d/</code>下所有calico相关的文件，这是删除CNI插件</li>
+<li>所有节点重启kubelet，<code>systemctl restart kubelet</code></li>
+<li>删除coredns的pod，<code>kubectl delete pod coredns-xxxxxxxxx-xxxxx</code></li>
+</ul>
+</div>
+<h3 id="_11">测试</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="o">[</span>speit@node0<span class="o">]</span> $ kubectl get 
+<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="o">[</span>speit@node0<span class="o">]</span> $ kubectl get nodes
+</code></pre></div>
+<p><img alt="Test result" src="../img/20220426233657.png" />  </p>
+<h2 id="_12">其他的实用配置</h2>
+<h3 id="rbac">RBAC</h3>
+<p>使用kubeadm搭建的集群默认开启RBAC</p>
+<h3 id="_13">使用配置文件初始化</h3>
+<p><code>kubeadm config print init-defaults &gt; configfile.yaml</code>可以讲kubeadm的默认配置保存到一个<code>configfile.yaml</code>。修改这个文件，然后从配置文件初始化集群，可以加入很多自定义的配置</p>
+<h3 id="ipvs">开启IPVS</h3>
+<p>官方文档说明，IPVS能够支持更大的K8S规模，带来更低的网络延时。</p>
+<p>首先，确保有关的内核模块已经加载</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>sudo lsmod <span class="p">|</span> grep ip_vs
+</code></pre></div>
+<p>确保结果中存在 <code>ip_vs</code>、<code>ip_vs_rr</code>、<code>ip_vs_wrr</code>、<code>ip_vs_sh</code>、<code>nf_conntrack</code></p>
+<p>如果没有，则加载相关模块</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>sudo modprobe -- ip_vs
+<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>sudo modprobe -- ip_vs_rr
+<a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a>sudo modprobe -- ip_vs_wrr
+<a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a>sudo modprobe -- ip_vs_sh
+<a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a>sudo modprobe -- nf_conntrack
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>将这些<code>modprobe</code>mingling添加进<code>/etc/rc.local</code>以使能开机加载
+新版内核默认加载这些模块</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>早期的kube-proxy对<code>nf_conntrack_ipv4</code>有强制要求</p>
+</div>
+<p>安装<code>ipvsadm</code>和<code>ipset</code></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>sudo apt-get install ipvsadm ipset
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>kubectl edit cm -n kube-system  kube-proxy
+</code></pre></div>
+<p>修改<code>mode</code>的值为<code>ipvs</code></p>
+<p><img alt="Modify the configMap" src="../img/20220501185939.png" />  </p>
+<p>获取kube-proxy的Pod</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>kubectl get pods -n kube-system <span class="p">|</span> grep proxy
+<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>kube-proxy-4cwj7                          <span class="m">1</span>/1     Running   <span class="m">1</span> <span class="o">(</span>156m ago<span class="o">)</span>    27h
+<a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a>kube-proxy-7pkpb                          <span class="m">1</span>/1     Running   <span class="m">1</span> <span class="o">(</span>156m ago<span class="o">)</span>    27h
+<a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a>kube-proxy-9r4hn                          <span class="m">1</span>/1     Running   <span class="m">1</span> <span class="o">(</span>156m ago<span class="o">)</span>    27h
+</code></pre></div>
+<p>通过删除Pod，令其自动重启（kube-proxy并不会被真正删除）</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>kubectl delete  pod -n kube-system  kube-proxy-4cwj7
+<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a>kubectl delete  pod -n kube-system  kube-proxy-7pkpb
+<a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a>kubectl delete  pod -n kube-system  kube-proxy-9r4hn
+</code></pre></div>
+<p>重启后，kube-proxy会自动侦测K8S集群的配置模式，并工作在IPVS模式下</p>
+<h3 id="tlsbootstrap">启用TLSBootstrap</h3>
+<p>安装metrics-server时候可能会遇到metrics-server启动但是不可用的问题，这是因为metrics-server默认会检查worker节点的InternalIP是否与节点证书匹配，而节点签发证书的时候只包含了自身的主机名。解决方法就是启用<code>TLSBootstrap</code></p>
+<p>参考<a href="https://kubernetes.io/zh/docs/reference/access-authn-authz/certificate-signing-requests/">证书签名请求</a>我们需要修改kubeadm的ConfigMap，使用<code>kubectl get cm -n kube-system</code>获取<code>kube-system</code>命名空间下的ConfigMap</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="o">[</span>node0<span class="o">]</span> $ kubectl get cm -n kube-system
+<a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a>NAME                                 DATA   AGE
+<a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a>calico-config                        <span class="m">4</span>      8h
+<a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a>coredns                              <span class="m">1</span>      9h
+<a id="__codelineno-31-5" name="__codelineno-31-5" href="#__codelineno-31-5"></a>extension-apiserver-authentication   <span class="m">6</span>      9h
+<a id="__codelineno-31-6" name="__codelineno-31-6" href="#__codelineno-31-6"></a>kube-proxy                           <span class="m">2</span>      9h
+<a id="__codelineno-31-7" name="__codelineno-31-7" href="#__codelineno-31-7"></a>kube-root-ca.crt                     <span class="m">1</span>      9h
+<a id="__codelineno-31-8" name="__codelineno-31-8" href="#__codelineno-31-8"></a>kubeadm-config                       <span class="m">1</span>      9h
+<a id="__codelineno-31-9" name="__codelineno-31-9" href="#__codelineno-31-9"></a>kubelet-config-1.23                  <span class="m">1</span>      9h
+</code></pre></div>
+<p>修改ConfigMap</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>kubectl edit cm kubelet-config-1.23 -n kube-system
+</code></pre></div>
+<p>将会打开一个VI编辑器供修改</p>
+<p><img alt="Edit ConfigMap" src="../img/20220430005239.png" />  </p>
+<p>在<code>data.kubelet</code>下，添加<code>serverTLSBootstrap: true</code>键值对</p>
+<p>修改<strong>所有</strong>节点的<code>/var/lib/kubelet/config.yaml</code>，进行同样的改动，然后重启kubelet</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="o">[</span>all<span class="o">]</span> $ vim /var/lib/kubelet/config.yaml
+<a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a><span class="o">[</span>all<span class="o">]</span> $ systemctl restart kubelet
+</code></pre></div>
+<p>在控制平面节点上，使用<code>kubectl get csr</code>查看APIServer得到的CSR申请</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="o">[</span>node0<span class="o">]</span> $ kubectl get csr
+<a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a>NAME        AGE     SIGNERNAME                      REQUESTOR           REQUESTEDDURATION   CONDITION
+<a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a>csr-2nk7h   5m49s   kubernetes.io/kubelet-serving   system:node:node2   &lt;none&gt;              Pending
+<a id="__codelineno-34-4" name="__codelineno-34-4" href="#__codelineno-34-4"></a>csr-8982q   14s     kubernetes.io/kubelet-serving   system:node:node1   &lt;none&gt;              Pending
+<a id="__codelineno-34-5" name="__codelineno-34-5" href="#__codelineno-34-5"></a>csr-chg65   25s     kubernetes.io/kubelet-serving   system:node:node0   &lt;none&gt;              Pending
+</code></pre></div>
+<p>使用<code>kubectl certificate approve</code> 命令批准每一个证书</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>kubectl certificate approve csr-xxxxx
+</code></pre></div>
+<p><img alt="CSR" src="../img/20220430104945.png" /></p>
+<h3 id="_14">添加命令补全</h3>
+<p>如果想为kubectl添加终端的自动补全，根据使用的Shell不同可以执行如下命令</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Bash</label><label for="__tabbed_1_2">Zsh</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="o">[</span>speit@host<span class="o">]</span> $ <span class="nb">echo</span> <span class="s1">&#39;source &lt;(kubectl completion bash)&#39;</span> &gt;&gt;~/.bashrc
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="o">[</span>speit@host<span class="o">]</span> $ <span class="nb">echo</span> <span class="s1">&#39;source &lt;(kubectl completion zsh)&#39;</span> &gt;&gt;~/.zshrc
+</code></pre></div>
+</div>
+</div>
+</div>
+<h3 id="helm">安装Helm</h3>
+<p>Helm是一种K8S包管理工具</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:3"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Linux</label><label for="__tabbed_2_2">Linux Binary</label><label for="__tabbed_2_3">MacOS</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a>curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+<a id="__codelineno-38-2" name="__codelineno-38-2" href="#__codelineno-38-2"></a>bash get_helm.sh
+</code></pre></div>
+<blockquote>
+<p>这会安装最新版本的Helm</p>
+</blockquote>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a>curl -LO https://get.helm.sh/helm-v3.8.0-linux-amd64.tar.gz <span class="c1"># 3.8.0为版本号, amd64为架构</span>
+<a id="__codelineno-39-2" name="__codelineno-39-2" href="#__codelineno-39-2"></a>tar -xvf helm-v3.8.0-linux-amd64.tar.gz
+<a id="__codelineno-39-3" name="__codelineno-39-3" href="#__codelineno-39-3"></a>sudo install ./linux-amd64/helm /usr/local/bin/helm
+</code></pre></div>
+<blockquote>
+<p>这会安装指定架构和版本的Helm</p>
+</blockquote>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a>brew install helm
+<a id="__codelineno-40-2" name="__codelineno-40-2" href="#__codelineno-40-2"></a><span class="c1"># brew install helm@3.8.0</span>
+</code></pre></div>
+<blockquote>
+<p>这会安装指定版本的Helm</p>
+</blockquote>
+</div>
+</div>
+</div>
+<p>如果想为helm添加终端的自动补全，根据使用的Shell不同可以执行如下命令</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Bash</label><label for="__tabbed_3_2">Zsh</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a><span class="o">[</span>speit@host<span class="o">]</span> $ <span class="nb">echo</span> <span class="s1">&#39;source &lt;(helm completion bash)&#39;</span> &gt;&gt;~/.bashrc
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a><span class="o">[</span>speit@host<span class="o">]</span> $ <span class="nb">echo</span> <span class="s1">&#39;source &lt;(helm completion zsh)&#39;</span> &gt;&gt;~/.zshrc
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>Helm不一定要安装在集群的节点上。它可以被安装在遥控集群的节点上</p>
+<h3 id="metallb">安装MetalLB</h3>
+<p>MetalLB为私有云搭建的K8S集群提供LoadBalance能力</p>
+<p>首先，由于我们的集群工作在IPVS模式下，需要编辑configmap文件开启strictARP。<a href="https://metallb.universe.tf/installation/">INSTALLATION</a></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a>$ kubectl edit configmap -n kube-system kube-proxy
+<a id="__codelineno-43-2" name="__codelineno-43-2" href="#__codelineno-43-2"></a>apiVersion: kubeproxy.config.k8s.io/v1alpha1
+<a id="__codelineno-43-3" name="__codelineno-43-3" href="#__codelineno-43-3"></a>kind: KubeProxyConfiguration
+<a id="__codelineno-43-4" name="__codelineno-43-4" href="#__codelineno-43-4"></a>mode: <span class="s2">&quot;ipvs&quot;</span>
+<a id="__codelineno-43-5" name="__codelineno-43-5" href="#__codelineno-43-5"></a>ipvs:
+<a id="__codelineno-43-6" name="__codelineno-43-6" href="#__codelineno-43-6"></a>  strictARP: <span class="nb">true</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a>wget https://raw.githubusercontent.com/metallb/metallb/v0.12.1/manifests/namespace.yaml -O namespace.yaml
+<a id="__codelineno-44-2" name="__codelineno-44-2" href="#__codelineno-44-2"></a>wget https://raw.githubusercontent.com/metallb/metallb/v0.12.1/manifests/metallb.yaml -O metallb.yaml
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a>kubectl apply -f namespace.yaml
+<a id="__codelineno-45-2" name="__codelineno-45-2" href="#__codelineno-45-2"></a>kubectl apply -f metallb.yaml
+</code></pre></div>
+<div class="highlight"><span class="filename">metallbcm.yaml</span><pre><span></span><code><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span><span class="w"></span>
+<a id="__codelineno-46-2" name="__codelineno-46-2" href="#__codelineno-46-2"></a><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span><span class="w"></span>
+<a id="__codelineno-46-3" name="__codelineno-46-3" href="#__codelineno-46-3"></a><span class="nt">metadata</span><span class="p">:</span><span class="w"></span>
+<a id="__codelineno-46-4" name="__codelineno-46-4" href="#__codelineno-46-4"></a><span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">metallb-system</span><span class="w"></span>
+<a id="__codelineno-46-5" name="__codelineno-46-5" href="#__codelineno-46-5"></a><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">config</span><span class="w"></span>
+<a id="__codelineno-46-6" name="__codelineno-46-6" href="#__codelineno-46-6"></a><span class="nt">data</span><span class="p">:</span><span class="w"></span>
+<a id="__codelineno-46-7" name="__codelineno-46-7" href="#__codelineno-46-7"></a><span class="w">  </span><span class="nt">config</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span><span class="w"></span>
+<a id="__codelineno-46-8" name="__codelineno-46-8" href="#__codelineno-46-8"></a><span class="w">    </span><span class="no">address-pools:</span><span class="w"></span>
+<a id="__codelineno-46-9" name="__codelineno-46-9" href="#__codelineno-46-9"></a><span class="w">    </span><span class="no">- name: default</span><span class="w"></span>
+<a id="__codelineno-46-10" name="__codelineno-46-10" href="#__codelineno-46-10"></a><span class="w">      </span><span class="no">protocol: layer2</span><span class="w"></span>
+<a id="__codelineno-46-11" name="__codelineno-46-11" href="#__codelineno-46-11"></a><span class="w">      </span><span class="no">addresses:</span><span class="w"></span>
+<a id="__codelineno-46-12" name="__codelineno-46-12" href="#__codelineno-46-12"></a><span class="w">      </span><span class="no">- 172.42.42.100-172.42.42.120 # Change to IP</span><span class="w"></span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>172.42.42.100-172.42.42.120 需要修改成实际的IP</p>
+</div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a>kubectl apply -f metallbcm.yaml
+</code></pre></div>
+<h3 id="_15">珍爱生命，远离交大云</h3>
+<p>有四个坑很关键，都是和网络有关的。</p>
+<ol>
+<li>JCloud中，克隆的虚拟机内编辑<code>/etc/network/interface</code>修改为固定IP后，需要卸载网卡重新安装，并在安装时固定IP，否则无法联网</li>
+<li>必须给每个虚拟机都绑定一个浮动IP，校园网就行，不然容器无法访问外网（下载都不行）</li>
+<li>最纸张的一点，克隆虚拟机的时候，产生的虚拟机默认安全组是default，也就是默认的一套规则，并不是源虚拟机选择的规则（这会导致calico等依赖iptables的组件直接失效）。<strong>一定要检查虚拟机安全组</strong></li>
+<li>JCloud会莫名其妙组织虚拟机联网，导致SSH挂掉、<code>kubectl</code>连不上。这时候需要重启虚拟机</li>
+</ol>
+<h2 id="references">References</h2>
+<p><a href="https://kubernetes.io/zh/docs/setup/production-environment/tools/">kubernets.io</a></p>
+
+              
+            </article>
+            
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-top--hidden md-icon" data-md-component="top">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../minikube/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Minikube" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Minikube
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../container/" class="md-footer__link md-footer__link--next" aria-label="Next: Container" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Container
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.tabs.link", "navigation.tracking", "navigation.instant", "navigation.tabs", "navigation.indexes", "navigation.top", "toc.integrate"], "search": "../assets/javascripts/workers/search.b028fd86.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.0f659f14.min.js"></script>
+      
+        <script src="../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,986 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://report.ice6413p.space/helm/">
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.0">
+    
+    
+      
+        <title>Helm - K8S Experiment</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.fd896c8a.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+
+  <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-WZKCHK54MZ"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&gtag("event","search",{search_term:this.value})}),"undefined"!=typeof location$&&location$.subscribe(function(e){gtag("config","G-WZKCHK54MZ",{page_path:e.pathname})})})</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-WZKCHK54MZ"></script>
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#helm" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="K8S Experiment" class="md-header__button md-logo" aria-label="K8S Experiment" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            K8S Experiment
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Helm
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/davidliyutong/ICE6413P-260-M01.git" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href=".." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../installation/" class="md-tabs__link">
+        Installation
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../container/" class="md-tabs__link">
+      Container
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../objects/" class="md-tabs__link">
+      Objects
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../components/" class="md-tabs__link">
+      Components
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  <li class="md-tabs__item">
+    <a href="./" class="md-tabs__link md-tabs__link--active">
+      Helm
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../wordpress/" class="md-tabs__link">
+      Wordpress
+    </a>
+  </li>
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="K8S Experiment" class="md-nav__button md-logo" aria-label="K8S Experiment" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    K8S Experiment
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/davidliyutong/ICE6413P-260-M01.git" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Installation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Installation" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Installation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../installation/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../docker/" class="md-nav__link">
+        Docker
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../minikube/" class="md-nav__link">
+        Minikube
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cluster/" class="md-nav__link">
+        Cluster
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../container/" class="md-nav__link">
+        Container
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../objects/" class="md-nav__link">
+        Objects
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../components/" class="md-nav__link">
+        Components
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Helm
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Helm
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    原理
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#repo" class="md-nav__link">
+    Repo操作
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#charts" class="md-nav__link">
+    安装Charts
+  </a>
+  
+    <nav class="md-nav" aria-label="安装Charts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mariadb" class="md-nav__link">
+    MariaDB
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mongodb" class="md-nav__link">
+    MongoDB
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#redis" class="md-nav__link">
+    Redis
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rabbitmq" class="md-nav__link">
+    RabbitMQ
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kafka" class="md-nav__link">
+    Kafka
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#elasticsearch" class="md-nav__link">
+    ElasticSearch
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#custom-charts" class="md-nav__link">
+    Custom Charts
+  </a>
+  
+    <nav class="md-nav" aria-label="Custom Charts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#release" class="md-nav__link">
+    Release
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#custom-charts_1" class="md-nav__link">
+    Custom Charts
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wordpress/" class="md-nav__link">
+        Wordpress
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+  <a href="https://github.com/davidliyutong/ICE6413P-260-M01.git/edit/master/docs/helm.md" title="Edit this page" class="md-content__button md-icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+
+
+<h1 id="helm">Helm</h1>
+<p>Helm 是 k8s 的一个项目，相当于 CentOS 的 yum, Debian的apt。</p>
+<h2 id="_1">原理</h2>
+<ul>
+<li>chart：是 Helm 管理的安装包，里面包含需要部署的安装包资源。</li>
+<li>config：包含了可以合并到打包的 chart 中的配置信息，用于创建一个可发布的对象。</li>
+<li>release：是一个与特定 config 相结合的 chart 的运行实例，一个 chart 可以部署多个 release，即这个 chart 可以被安装多次。</li>
+<li>repository：chart 的仓库，用于发布和存储 chart。</li>
+</ul>
+<p>Helm3 架构:</p>
+<pre class="mermaid"><code>flowchart LR
+A[Helm Client] &lt;--&gt; B[Helm Library]</code></pre>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Helm3 最明显的变化是删除了 Tiller</p>
+</div>
+<h2 id="repo">Repo操作</h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>helm version
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>helm repo add stable https://mirror.azure.cn/kubernetes/charts/
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>helm repo add incubator https://mirror.azure.cn/kubernetes/charts-incubator/
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>helm repo add bitnami https://charts.bitnami.com/bitnami
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>helm repo update
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>helm search repo stable
+</code></pre></div>
+<blockquote>
+<p><code>stable</code>通道有<a href="https://mirror.azure.cn/kubernetes/charts/">https://mirror.azure.cn/kubernetes/charts/</a>镜像可以替代</p>
+</blockquote>
+<h2 id="charts">安装Charts</h2>
+<p>本小节会介绍一些常用Charts的安装方法</p>
+<p>可以通过两种方式验证部署的情况</p>
+<ul>
+<li>K8S：可以在K8S上运行一个 Pod 作为客户端</li>
+<li>本地：可以用<code>kubectl port-forward</code>将MySQL服务转发到本地</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>大部分数据库应用都会产生PVC。因此需要先准备一个storageClass，否则需要手动创建PV来回应PVC</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>在Minikube上，大部分的Helm Chart都不需要指定storageClass</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>许多本地客户端接入命令会导致kubectl端口转发任务作为后台任务创建。可以用<code>jobs</code>命令列出用户的后台任务，然后使用<code>kill %[n]</code>等命令结束（<code>n</code>为后台任务的编号）</p>
+</div>
+<h3 id="mariadb">MariaDB</h3>
+<p>MariaDB 是和MySQL兼容的关系型数据库</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>helm install my-mariadb --set global.storageClass<span class="o">=</span>nfs-client bitnami/mariadb
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>helm uninstall my-mariadb
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code>helm uninstall</code>命令不会释放PVC，需要手动释放。（bitnami/mariadb）</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><code>--set global.storageClass=nfs-client</code>指定了使用nfs-client作为storageClass
+<code>global.storageClass</code>的默认参数可以通过<code>helm inspect all stable/mysql</code>获得</p>
+</div>
+<p>可以通过<code>kubectl get secret</code>获取密码</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nb">export</span> <span class="nv">MARIADB_ROOT_PASSWORD</span><span class="o">=</span><span class="k">$(</span>kubectl get secret --namespace default my-mariadb -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s2">&quot;{.data.mariadb-root-password}&quot;</span> <span class="p">|</span> base64 --decode<span class="k">)</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nb">echo</span> <span class="nv">$MARIADB_ROOT_PASSWORD</span>
+</code></pre></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Pod接入</label><label for="__tabbed_1_2">本地客户端接入</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>kubectl run my-mariadb-client --rm --tty -i --restart<span class="o">=</span><span class="s1">&#39;Never&#39;</span> --image  docker.io/bitnami/mariadb:10.6.7-debian-10-r70 --namespace default --command -- bash
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="o">[</span>pod<span class="o">]</span> $ mysql -h my-mariadb -uroot -p
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>Enter Password: 
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># 转发端口</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nv">MARIADB_PORT</span><span class="o">=</span><span class="m">3307</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>kubectl port-forward --namespace default svc/my-mysql <span class="m">3307</span>:3306
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1">#  在另一终端</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nv">MARIADB_PORT</span><span class="o">=</span><span class="m">3307</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>mysql -h <span class="m">127</span>.0.0.1 -P<span class="si">${</span><span class="nv">MARIADB_PORT</span><span class="si">}</span> -u root -p<span class="si">${</span><span class="nv">MYSQL_ROOT_PASSWORD</span><span class="si">}</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>Enter Password: 
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>验证</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">MariaDB</span><span class="w"> </span><span class="p">[(</span><span class="k">none</span><span class="p">)]</span><span class="o">&gt;</span><span class="w"> </span><span class="k">show</span><span class="w"> </span><span class="n">databases</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
+<p><img alt="Pod Access MariaDB" src="../img/20220518152835.png" /></p>
+<p><img alt="Local Access MariaDB" src="../img/20220518153827.png" />  </p>
+<h3 id="mongodb">MongoDB</h3>
+<p>MongoDB 是一个基于分布式文件存储的数据库</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>helm install my-mongodb --set persistence.storageClass<span class="o">=</span>nfs-client stable/mongodb
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>helm uninstall my-mongodb
+</code></pre></div>
+<p>获取密码</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nb">export</span> <span class="nv">MONGODB_ROOT_PASSWORD</span><span class="o">=</span><span class="k">$(</span>kubectl get secret --namespace default my-mongodb -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s2">&quot;{.data.mongodb-root-password}&quot;</span> <span class="p">|</span> base64 --decode<span class="k">)</span>
+</code></pre></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Pod接入</label><label for="__tabbed_2_2">本地客户端接入</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>kubectl run --namespace default my-mongodb-client --rm --tty -i --restart<span class="o">=</span><span class="s1">&#39;Never&#39;</span> --image docker.io/bitnami/mongodb:4.2.4-debian-10-r0 --command -- mongo admin --host my-mongodb --authenticationDatabase admin -u root -p <span class="nv">$MONGODB_ROOT_PASSWORD</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>kubectl port-forward --namespace default svc/my-mongodb <span class="m">27017</span>:27017 <span class="p">&amp;</span> mongo --host <span class="m">127</span>.0.0.1 --authenticationDatabase admin -p <span class="nv">$MONGODB_ROOT_PASSWORD</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>验证</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>show dbs
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>use ice6413p <span class="c1"># 创建db</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>db <span class="c1"># 显示当前db</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>db.ice6413p.insert<span class="o">({</span><span class="s2">&quot;name&quot;</span>:<span class="s2">&quot;ice6413p&quot;</span><span class="o">})</span> <span class="c1"># 插入一条数据</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>show dbs <span class="c1"># 应该会多出一个ice6413p</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>db.dropDatabase<span class="o">()</span> <span class="c1"># 删除db</span>
+</code></pre></div>
+<p><img alt="Pod Access MongoDB" src="../img/20220518154205.png" /></p>
+<h3 id="redis">Redis</h3>
+<p>Redis 是一个key-value 存储系统，是跨平台的非关系型数据库</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>helm install my-redis --set slave.persistence.storageClass<span class="o">=</span>nfs-client,master.persistence.storageClass<span class="o">=</span>nfs-client stable/redis
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>helm uninstall my-redis
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code>helm uninstall</code>命令不会释放PVC，需要手动释放。（stable/redis）</p>
+</div>
+<p>获取密码</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="nb">export</span> <span class="nv">REDIS_PASSWORD</span><span class="o">=</span><span class="k">$(</span>kubectl get secret --namespace default my-redis -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s2">&quot;{.data.redis-password}&quot;</span> <span class="p">|</span> base64 --decode<span class="k">)</span> 
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="nb">echo</span> <span class="nv">$REDIS_PASSWORD</span>
+</code></pre></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Pod接入</label><label for="__tabbed_3_2">本地客户端接入</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>kubectl run --namespace default my-redis-client --rm --tty -i --restart<span class="o">=</span><span class="s1">&#39;Never&#39;</span> --env <span class="nv">REDIS_PASSWORD</span><span class="o">=</span><span class="nv">$REDIS_PASSWORD</span> --image docker.io/bitnami/redis:5.0.7-debian-10-r32 -- bash
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="o">[</span>pod<span class="o">]</span> $ redis-cli -h my-redis-master -a <span class="nv">$REDIS_PASSWORD</span> <span class="c1"># read/write operation</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="o">[</span>pod<span class="o">]</span> $ redis-cli -h my-redis-slave -a <span class="nv">$REDIS_PASSWORD</span> <span class="c1"># read-only operation</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>kubectl port-forward --namespace default svc/my-redis-master <span class="m">6379</span>:6379 <span class="p">&amp;</span> 
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>redis-cli -h <span class="m">127</span>.0.0.1 -p <span class="m">6379</span> -a <span class="nv">$REDIS_PASSWORD</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>验证</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="nb">set</span> aaa <span class="s2">&quot;xxx&quot;</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>get aaa
+</code></pre></div>
+<p><img alt="Pod Access Redis" src="../img/20220518154431.png" /></p>
+<h3 id="rabbitmq">RabbitMQ</h3>
+<p>RabbitMQ是实现了高级消息队列协议（AMQP）的开源消息代理软件</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>helm install my-rabbitmq --set persistence.storageClass<span class="o">=</span>nfs-client stable/rabbitmq
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>helm uninstall my-rabbitmq
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code>helm uninstall</code>命令不会释放PVC，需要手动释放。（stable/rabbitmq）</p>
+</div>
+<p>获取凭据</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="nb">export</span> <span class="nv">RABBITMQ_USERNAME</span><span class="o">=</span><span class="s2">&quot;user&quot;</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="nb">export</span> <span class="nv">RABBITMQ_PASSWORD</span><span class="o">=</span><span class="k">$(</span>kubectl get secret --namespace default my-rabbitmq -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s2">&quot;{.data.rabbitmq-password}&quot;</span> <span class="p">|</span> base64 --decode<span class="k">)</span>
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="nb">export</span> <span class="nv">RABBITMQ_COOKIE</span><span class="o">=</span><span class="k">$(</span>kubectl get secret --namespace default my-rabbitmq -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s2">&quot;{.data.rabbitmq-erlang-cookie}&quot;</span> <span class="p">|</span> base64 --decode<span class="k">)</span>
+</code></pre></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:1"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">本地客户端接入</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="c1"># AMQP</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>kubectl port-forward --namespace default svc/my-rabbitmq <span class="m">5672</span>:5672 <span class="p">&amp;</span>
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="nb">echo</span> <span class="s2">&quot;URL: amqp://127.0.0.1:5672/&quot;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="c1"># Management Interface</span>
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>kubectl port-forward --namespace default svc/my-rabbitmq <span class="m">15672</span>:15672 <span class="p">&amp;</span>
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="nb">echo</span> <span class="s2">&quot;URL: http://127.0.0.1:15672/&quot;</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>上述的命令会导致端口转发任务作为后台任务创建</p>
+</div>
+<p><img alt="Local Access RabbitMQ" src="../img/20220518154700.png" /><br />
+<img alt="RabbitMQ Management UI" src="../img/20220518154737.png" /></p>
+<h3 id="kafka">Kafka</h3>
+<p>Kafka 是一种分布式的，基于发布 / 订阅的消息系统。主要设计目标如下： 以时间复杂度为 O(1) 的方式提供消息持久化能力</p>
+<p>Kafka 不需要持久化</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>helm install my-kafka stable/kafka-manager
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>helm uninstall my-kafka
+</code></pre></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:1"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">本地客户端接入</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="nb">export</span> <span class="nv">POD_NAME</span><span class="o">=</span><span class="k">$(</span>kubectl get pods --namespace default -l <span class="s2">&quot;app=kafka-manager,release=my-kafka&quot;</span> -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s2">&quot;{.items[0].metadata.name}&quot;</span><span class="k">)</span>
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>kubectl port-forward <span class="nv">$POD_NAME</span> <span class="m">8080</span>:9000
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>访问<code>http://127.0.0.1:8080/</code></p>
+<p><img alt="Install Kafka" src="../img/20220518005644.png" /></p>
+<p><img alt="Kafka Management UI" src="../img/20220518155240.png" /></p>
+<h3 id="elasticsearch">ElasticSearch</h3>
+<p>Elasticsearch 是一个分布式、RESTful 风格的搜索和数据分析引擎，能够解决不断涌现出的各种用例</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>helm install my-es --set global.storageClass<span class="o">=</span>nfs-client bitnami/elasticsearch
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>helm uninstall my-es
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>根据<a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/file-descriptors.html">这里</a>和<a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/vm-max-map-count.html">这里</a>，ElasticSearch需要执行<code>sysctl -w vm.max_map_count=262144 &amp;&amp; sysctl -w fs.file-max=65536</code>修改内核设置</p>
+</div>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:1"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">本地客户端接入</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="nb">export</span> <span class="nv">POD_NAME</span><span class="o">=</span><span class="k">$(</span>kubectl get pods --namespace default -l <span class="s2">&quot;app.kubernetes.io/instance=my-es,app.kubernetes.io/component=master&quot;</span> -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s2">&quot;{.items[0].metadata.name}&quot;</span><span class="k">)</span>
+<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>kubectl port-forward --namespace default <span class="nv">$POD_NAME</span> <span class="m">9200</span>:9200 
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>执行<code>curl http://127.0.0.1:9200/</code></p>
+<p><img alt="Local Access ElasticSearch" src="../img/20220518160033.png" />  </p>
+<h2 id="custom-charts">Custom Charts</h2>
+<p>可以自定义Charts。以下是一些常见的命令</p>
+<h3 id="release">Release</h3>
+<ul>
+<li><code>helm create hello-svc</code>: 创建 Helm package</li>
+<li><code>helm install --dry-run --debug ./</code>：验证模板和配置</li>
+<li><code>helm install ./</code>：启动本chart的release</li>
+<li><code>helm list</code>：列出 release</li>
+<li><code>helm delete [release]</code> 删除特定的 release</li>
+</ul>
+<h3 id="custom-charts_1">Custom Charts</h3>
+<p>举例说明</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="o">[</span>node<span class="o">]</span> $ docker pull nginx <span class="c1"># Selective</span>
+<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>helm create hello-helm
+<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a>helm install hello-nginx ./hello-helm
+<a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a><span class="nb">export</span> <span class="nv">POD_NAME</span><span class="o">=</span><span class="k">$(</span>kubectl get pods --namespace default -l <span class="s2">&quot;app.kubernetes.io/name=hello-helm&quot;</span> -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s2">&quot;{.items[0].metadata.name}&quot;</span><span class="k">)</span>
+<a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a>kubectl port-forward <span class="nv">$POD_NAME</span> <span class="m">8080</span>:80
+<a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a>helm uninstall hello-nginx 
+</code></pre></div>
+<p>访问 <code>http://127.0.0.1:8080</code> 来使用应用</p>
+<p><img alt="Hello-nginx" src="../img/20220518160715.png" /></p>
+<p>实验完毕删除所有的Helm Release和PVC</p>
+<p><img alt="Uninstall All Releases" src="../img/20220518160950.png" /></p>
+<p><img alt="Delete All PVCs" src="../img/20220518161049.png" /></p>
+
+              
+            </article>
+            
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-top--hidden md-icon" data-md-component="top">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../components/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Components" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Components
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../wordpress/" class="md-footer__link md-footer__link--next" aria-label="Next: Wordpress" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Wordpress
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.tabs.link", "navigation.tracking", "navigation.instant", "navigation.tabs", "navigation.indexes", "navigation.top", "toc.integrate"], "search": "../assets/javascripts/workers/search.b028fd86.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.0f659f14.min.js"></script>
+      
+        <script src="../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

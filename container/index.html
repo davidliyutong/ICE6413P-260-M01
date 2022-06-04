@@ -1,0 +1,1324 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://report.ice6413p.space/container/">
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.0">
+    
+    
+      
+        <title>Container - K8S Experiment</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.fd896c8a.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+
+  <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-WZKCHK54MZ"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&gtag("event","search",{search_term:this.value})}),"undefined"!=typeof location$&&location$.subscribe(function(e){gtag("config","G-WZKCHK54MZ",{page_path:e.pathname})})})</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-WZKCHK54MZ"></script>
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#container-experiment" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="K8S Experiment" class="md-header__button md-logo" aria-label="K8S Experiment" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            K8S Experiment
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Container
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/davidliyutong/ICE6413P-260-M01.git" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href=".." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../installation/" class="md-tabs__link">
+        Installation
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  <li class="md-tabs__item">
+    <a href="./" class="md-tabs__link md-tabs__link--active">
+      Container
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../objects/" class="md-tabs__link">
+      Objects
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../components/" class="md-tabs__link">
+      Components
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../helm/" class="md-tabs__link">
+      Helm
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../wordpress/" class="md-tabs__link">
+      Wordpress
+    </a>
+  </li>
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="K8S Experiment" class="md-nav__button md-logo" aria-label="K8S Experiment" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    K8S Experiment
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/davidliyutong/ICE6413P-260-M01.git" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Installation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Installation" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Installation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../installation/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../docker/" class="md-nav__link">
+        Docker
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../minikube/" class="md-nav__link">
+        Minikube
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cluster/" class="md-nav__link">
+        Cluster
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Container
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Container
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#basics-namespace" class="md-nav__link">
+    Basics - namespace
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#basic-cgroup" class="md-nav__link">
+    Basic - cgroup
+  </a>
+  
+    <nav class="md-nav" aria-label="Basic - cgroup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cpu" class="md-nav__link">
+    CPU 限制
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#io" class="md-nav__link">
+    IO 限制
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#basics-rootfs" class="md-nav__link">
+    Basics - rootfs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#docker-image" class="md-nav__link">
+    Docker - image
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#docker-advanced" class="md-nav__link">
+    Docker - advanced
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#docker-runtime" class="md-nav__link">
+    Docker - runtime
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#docker-volume" class="md-nav__link">
+    Docker - volume
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#docker-network" class="md-nav__link">
+    docker - network
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dockerfile" class="md-nav__link">
+    dockerfile
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#docker-lab" class="md-nav__link">
+    docker - lab
+  </a>
+  
+    <nav class="md-nav" aria-label="docker - lab">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#wordpress" class="md-nav__link">
+    Wordpress
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#python-server" class="md-nav__link">
+    Python server
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#frontback-end" class="md-nav__link">
+    Front/Back end
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#docker-in-docker" class="md-nav__link">
+    Docker in docker
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#docker-compose" class="md-nav__link">
+    docker-compose
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../objects/" class="md-nav__link">
+        Objects
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../components/" class="md-nav__link">
+        Components
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../helm/" class="md-nav__link">
+        Helm
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wordpress/" class="md-nav__link">
+        Wordpress
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+  <a href="https://github.com/davidliyutong/ICE6413P-260-M01.git/edit/master/docs/container.md" title="Edit this page" class="md-content__button md-icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+
+
+<h1 id="container-experiment">Container Experiment</h1>
+<p>指南：</p>
+<p><a class="md-button" href="https://github.com/rebirthmonkey/k8s/tree/master/10_container">Lab Container</a></p>
+<h2 id="basics-namespace">Basics - namespace</h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="o">[</span>speit@host<span class="o">]</span> $ ls -l /proc/1/stat
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="o">[</span>speit@host<span class="o">]</span> $ docker inspect --format <span class="s1">&#39;{{.State.Pid}}&#39;</span> doc-server
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="m">453997</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="o">[</span>speit@host<span class="o">]</span> $ ls -alt /proc/453997/ns
+</code></pre></div>
+<p><img alt="Test ls -l /proc" src="../img/20220424004249.png" /></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code>'{{.State.Pid}}'</code> 指定了输出格式为pid。<code>docker</code>默认会输出json格式的字符串</p>
+<p>doc-server是容器的名称</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>可能需要sudo或者root权限来执行命令<code>ls -alt /proc/</code></p>
+</div>
+<p>将上述命令合二为一：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="o">[</span>speit@host<span class="o">]</span> $ sudo ls -alt /proc/<span class="k">$(</span>docker inspect --format <span class="s1">&#39;{{.State.Pid}}&#39;</span> doc-server<span class="k">)</span>/ns
+</code></pre></div>
+<p><img alt="All in one" src="../img/20220424004651.png" /></p>
+<h2 id="basic-cgroup">Basic - cgroup</h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>可能需要安装<code>cgroup-tools</code></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="o">[</span>speit@host<span class="o">]</span> $ sudo apt-get install cgroup-tools
+</code></pre></div>
+</div>
+<h3 id="cpu">CPU 限制</h3>
+<p>首先，查看系统中的cgroup</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="o">[</span>speit@host<span class="o">]</span> $ ls /sys/fs/cgroup/cpu/test
+</code></pre></div>
+<p>使用<code>cgcreate</code>创建组</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="o">[</span>speit@host<span class="o">]</span> $ sudo cgcreate -g cpu:test
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="o">[</span>speit@host<span class="o">]</span> $ ls /sys/fs/cgroup/cpu/test
+</code></pre></div>
+<p>创建一个进程，该进程为死循环</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="o">[</span>speit@host<span class="o">]</span> $ <span class="k">while</span> :<span class="p">;</span> <span class="k">do</span> :<span class="p">;</span> <span class="k">done</span> <span class="p">&amp;</span> <span class="nb">echo</span> <span class="nv">$!</span> &gt; test.pid <span class="o">&amp;&amp;</span> cat test.pid
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="o">[</span>speit@host<span class="o">]</span> $ top -p <span class="k">$(</span>cat test.pid<span class="k">)</span> -n <span class="m">1</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>使用echo $!可以显示上一条命令的pid，这命令旨在保存上一条命令的PID到<code>test.pid</code>中</p>
+</div>
+<p><img alt="Create a process" src="../img/20220424104450.png" /></p>
+<p>检查cgroup的各种限制</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="o">[</span>speit@host<span class="o">]</span> $ cat /sys/fs/cgroup/cpu/test/cpu.cfs_period_us
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="o">[</span>speit@host<span class="o">]</span> $ cat /sys/fs/cgroup/cpu/test/cpu.cfs_quota_us
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="o">[</span>speit@host<span class="o">]</span> $ cat /sys/fs/cgroup/cpu/test/tasks
+</code></pre></div>
+<p>限制CPU</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="o">[</span>speit@host<span class="o">]</span> $ <span class="nb">echo</span> <span class="m">30000</span> <span class="p">|</span> sudo tee /sys/fs/cgroup/cpu/test/cpu.cfs_quota_us
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="o">[</span>speit@host<span class="o">]</span> $ sudo cgclassify -g cpu:test <span class="k">$(</span>cat test.pid<span class="k">)</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><code>/sys/fs/cgroup/cpu/test/cpu.cfs_quota_us</code>需要root权限才能修改，因此这里使用 <code>tee</code> 配合管道完成设置</p>
+</div>
+<p>确认CPU的限制</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="o">[</span>speit@host<span class="o">]</span> $ cat /sys/fs/cgroup/cpu/test/cpu.cfs_quota_us
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="o">[</span>speit@host<span class="o">]</span> $ cat /sys/fs/cgroup/cpu/test/tasks
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="o">[</span>speit@host<span class="o">]</span> $ top -p <span class="k">$(</span>cat test.pid<span class="k">)</span> -n <span class="m">1</span>
+</code></pre></div>
+<p><img alt="Assign process to cgrouop" src="../img/20220424110414.png" />  </p>
+<p>删除cgroup，结束进程</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="o">[</span>speit@host<span class="o">]</span> $ sudo cgdelete cpu:test
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="o">[</span>speit@host<span class="o">]</span> $ <span class="nb">kill</span> -9 <span class="k">$(</span>cat test.pid<span class="k">)</span>
+</code></pre></div>
+<p><img alt="Clean up" src="../img/20220424110433.png" /></p>
+<h3 id="io">IO 限制</h3>
+<p>首先切换到root账户，执行dd命令，保存该进程的PID到test.pid中</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="o">[</span>speit@host<span class="o">]</span> $ sudo -s
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="o">[</span>root@host<span class="o">]</span> $ dd <span class="k">if</span><span class="o">=</span>/dev/sda <span class="nv">of</span><span class="o">=</span>/dev/null &gt; dd.log <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">&amp;</span> <span class="nb">echo</span> <span class="nv">$!</span> &gt; test.pid
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>iotop
+</code></pre></div>
+<p>我们可以看到，硬盘的读取速度是很快的</p>
+<p><img alt="Unlimited read" src="../img/20220424122817.png" /></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>该命令从/dev/sda设备读取文件并写入/dev/null中。/dev/sdas是磁盘设备，/dev/null则是一个特殊的，代表空设备文件。它通常用于丢弃不需要的数据输出</p>
+</div>
+<p>创建<code>blkio:test</code>组</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="o">[</span>root@host<span class="o">]</span> $ mkdir /sys/fs/cgroup/blkio/test
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>该命令等价于<code>cgcreate -g blkio:test</code></p>
+</div>
+<p>设置读写限制，单位为Byte/s，因此这里的限制是1MiB/s</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="o">[</span>root@host<span class="o">]</span> $ <span class="nb">echo</span> <span class="s1">&#39;8:0 1048576&#39;</span> <span class="p">|</span> sudo tee /sys/fs/cgroup/blkio/test/blkio.throttle.read_bps_device
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code>8:0</code> 代表设备的编号，可以用<code>ls -l $DEVICE</code>查看</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>ls -l /dev/sda
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>brw-rw---- <span class="m">1</span> root disk <span class="m">8</span>, <span class="m">0</span> 4月  <span class="m">16</span> <span class="m">15</span>:37 /dev/sda
+</code></pre></div>
+</div>
+<p>将进程的PID加入cgroup</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="o">[</span>root@host<span class="o">]</span> $ cat test.pid <span class="p">|</span> sudo tee -a /sys/fs/cgroup/blkio/test/tasks
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>sudo iotop -aod <span class="m">0</span>.1
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>在磁盘性能高的主机上，执行该命令时先前创建的读取进程可能已经退出。建议先设置好组的限速，再重新运行dd命令，并立刻将其添加到限制组内</p>
+</div>
+<p>我们可以看到，对设备/dev/sda的读取受到了限制</p>
+<p><img alt="Limited read" src="../img/20220424122927.png" />  </p>
+<p>全部的命令</p>
+<p><img alt="Limited read" src="../img/20220424123024.png" />  </p>
+<p>删除cgroup，结束进程</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="o">[</span>speit@host<span class="o">]</span> $ cgdelete blkio:test
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="o">[</span>speit@host<span class="o">]</span> $ <span class="nb">kill</span> -9 <span class="k">$(</span>cat test.pid<span class="k">)</span>
+</code></pre></div>
+<h2 id="basics-rootfs">Basics - rootfs</h2>
+<p>确认aufs支持</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="o">[</span>speit@host<span class="o">]</span> $ grep aufs /proc/filesystems
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>nodev    aufs
+</code></pre></div>
+<p>创建一系列测试用的目录</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="o">[</span>speit@host<span class="o">]</span> $ mkdir test-aufs <span class="o">&amp;&amp;</span> <span class="nb">cd</span> test-aufs
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="o">[</span>speit@host/test-aufs<span class="o">]</span> $ mkdir aufs-mnt container-layer image-layer-high image-layer-low
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="o">[</span>speit@host/test-aufs<span class="o">]</span> $ <span class="nb">echo</span> <span class="s2">&quot;x.txt from image layer high.&quot;</span> &gt; image-layer-high/x.txt
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="o">[</span>speit@host/test-aufs<span class="o">]</span> $ <span class="nb">echo</span> <span class="s2">&quot;I am image layer high&quot;</span> &gt; image-layer-high/image-layer-high.txt
+<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="o">[</span>speit@host/test-aufs<span class="o">]</span> $ <span class="nb">echo</span> <span class="s2">&quot;x.txt from image layer low.&quot;</span> &gt; image-layer-low/x.txt
+<a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a><span class="o">[</span>speit@host/test-aufs<span class="o">]</span> $ <span class="nb">echo</span> <span class="s2">&quot;I am image layer low&quot;</span> &gt; image-layer-low/image-layer-low.txt
+<a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a><span class="o">[</span>speit@host/test-aufs<span class="o">]</span> $ tree .
+<a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a>.
+<a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a>├── aufs-mnt
+<a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a>├── container-layer
+<a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a>├── image-layer-high
+<a id="__codelineno-17-12" name="__codelineno-17-12" href="#__codelineno-17-12"></a>│   ├── image-layer-high.txt
+<a id="__codelineno-17-13" name="__codelineno-17-13" href="#__codelineno-17-13"></a>│   └── x.txt
+<a id="__codelineno-17-14" name="__codelineno-17-14" href="#__codelineno-17-14"></a>└── image-layer-low
+<a id="__codelineno-17-15" name="__codelineno-17-15" href="#__codelineno-17-15"></a>    ├── image-layer-low.txt
+<a id="__codelineno-17-16" name="__codelineno-17-16" href="#__codelineno-17-16"></a>    └── x.txt
+<a id="__codelineno-17-17" name="__codelineno-17-17" href="#__codelineno-17-17"></a>
+<a id="__codelineno-17-18" name="__codelineno-17-18" href="#__codelineno-17-18"></a><span class="m">4</span> directories, <span class="m">4</span> files
+</code></pre></div>
+<p>挂载aufs文件系统</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="o">[</span>speit@host/test-aufs<span class="o">]</span> $ sudo mount -t aufs -o <span class="nv">dirs</span><span class="o">=</span>./container-layer:./image-layer-high:./image-layer-low none ./aufs-mnt
+</code></pre></div>
+<p>检查aufs文件系统的所有挂载情况</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="o">[</span>speit@host/test-aufs<span class="o">]</span> $ mount -t aufs
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>none on /home/speit/test-aufs/aufs-mnt <span class="nb">type</span> aufs <span class="o">(</span>rw,relatime,si<span class="o">=</span>9618ff4d613a568a<span class="o">)</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code>9618ff4d613a568a</code>为当前挂载的SI</p>
+</div>
+<p>检查当前挂载的文件系统，注意<code>/sys/fs/aufs/si_9618ff4d613a568a/</code>中<code>9618ff4d613a568a</code>，需要视情况修改</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="o">[</span>speit@host/test-aufs<span class="o">]</span> $ cat /sys/fs/aufs/si_9618ff4d613a568a/*
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>/home/speit/test-aufs/container-layer<span class="o">=</span>rw
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>/home/speit/test-aufs/image-layer-high<span class="o">=</span>ro
+<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>/home/speit/test-aufs/image-layer-low<span class="o">=</span>ro
+<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a><span class="m">64</span>
+<a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a><span class="m">65</span>
+<a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a><span class="m">66</span>
+<a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a>/home/speit/test-aufs/container-layer/.aufs.xino
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>注意这里只有<code>container-layer</code>有读写权限</p>
+</div>
+<p>检查挂载的<code>x.txt</code>内容</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="o">[</span>speit@host/test-aufs<span class="o">]</span> $ ls ./aufs-mnt
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>image-layer-high.txt  image-layer-low.txt  x.txt
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="o">[</span>speit@host/test-aufs<span class="o">]</span> $ cat ./aufs-mnt/x.txt
+<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>x.txt from image layer high.
+</code></pre></div>
+<p>high-layer的文件覆盖了low-layer的文件</p>
+<p><img alt="Overlaying" src="../img/20220424133027.png" /></p>
+<p>测试读写层</p>
+<p><img alt="Read-Write layer" src="../img/20220424134210.png" />  </p>
+<p>测试写时拷贝</p>
+<p><img alt="Copy on write" src="../img/20220424134430.png" />  </p>
+<p>测试whiteout删除</p>
+<p><img alt="Whiteout delete" src="../img/20220424134738.png" />  </p>
+<p>全部的测试</p>
+<p><img alt="rootfs overall experiment log" src="../img/20220424134606.png" /></p>
+<p>最后，使用umount命令停止挂载，可以发现container-layer中新增了<code>image-layer-low.txt</code>的拷贝</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="o">[</span>speit@host/test-aufs<span class="o">]</span> $ sudo umount ./aufs-mnt
+</code></pre></div>
+<p><img alt="Stop mounting" src="../img/20220424135335.png" /></p>
+<h2 id="docker-image">Docker - image</h2>
+<p>以下命令允许我们查找并安装<a href="https://hub.docker.com/_/ubuntu/"><code>ubuntu:focal</code></a>镜像</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="o">[</span>speit@host<span class="o">]</span> $ docker image ls
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="o">[</span>speit@host<span class="o">]</span> $ docker search ubuntu:focal
+<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="o">[</span>speit@host<span class="o">]</span> $ docker pull ubuntu:focal
+<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a><span class="o">[</span>speit@host<span class="o">]</span> $ docker image ls <span class="p">|</span> grep ubuntu
+<a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a><span class="o">[</span>speit@host<span class="o">]</span> $ docker ps -a
+</code></pre></div>
+<p><img alt="List image" src="../img/20220424135930.png" />
+<img alt="Search image" src="../img/20220424135952.png" />
+<img alt="Pull image" src="../img/20220424140152.png" /></p>
+<p>使用刚才下载的镜像启动容器，安装iputils-ping工具来使用<code>ping</code>命令</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="o">[</span>speit@host<span class="o">]</span> $ docker run -it --rm ubuntu:focal /bin/bash
+<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="o">[</span>root@ct<span class="o">]</span> $ ping <span class="m">8</span>.8.8.8 <span class="c1"># it doesn&#39;t work since it doesn&#39;t have the ping tool</span>
+<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="o">[</span>root@ct<span class="o">]</span> $ apt-get update &gt;/dev/null <span class="o">&amp;&amp;</span> apt-get install -y iputils-ping iproute2 <span class="p">&amp;</span>&gt; /dev/null
+<a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a><span class="o">[</span>root@ct<span class="o">]</span> $ ping <span class="m">8</span>.8.8.8 <span class="c1"># it works now!</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code>--rm</code>选项旨在当容器停止后删除容器</p>
+</div>
+<p><img alt="Install ping command" src="../img/20220424140802.png" /></p>
+<p>我们可以将该容器commit为一个新的镜像</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="o">[</span>speit@host<span class="o">]</span> $ docker ps -a <span class="p">|</span> grep ubuntu
+<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="o">[</span>speit@host<span class="o">]</span> $ docker commit -m <span class="s2">&quot;focal with ping&quot;</span> -a <span class="s2">&quot;natrium233&quot;</span> f4e18188ac94 natrium233/focal:with-ping
+<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a><span class="o">[</span>speit@host<span class="o">]</span> $ docker login
+<a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a><span class="o">[</span>speit@host<span class="o">]</span> $ docker image push natrium233/focal:with-ping
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code>natrium233</code> 为自己的用户名</p>
+</div>
+<p><img alt="Push" src="../img/20220424141127.png" /></p>
+<p>镜像以 <a href="https://hub.docker.com/r/natrium233/focal"><code>natrium233/focal</code></a>被push到了dockerhub</p>
+<p>使用<code>docker image rm</code>删除本地镜像</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="o">[</span>speit@host<span class="o">]</span> $ docker image rm natrium233/focal:with-ping
+</code></pre></div>
+<h2 id="docker-advanced">Docker - advanced</h2>
+<p>HTTP的docker registry不安全，所以我们部署支持HTTPS的registry</p>
+<p>我们需要准备一些材料：</p>
+<ul>
+<li>寻找/租借/购买一台具有公网IP的云主机</li>
+<li>注册一个域名</li>
+<li>申请一个免费的HTTPS证书</li>
+</ul>
+<p>在这个实验中，这些材料是这样准备的：</p>
+<ul>
+<li>主机：云主机是宿舍的服务器，有教育网公网IP</li>
+<li>域名：域名是<code>ice6413p.space</code>，绑定了cloudflare的DNS，将<a href="registry.ice6413p.space">registry.ice6413p.space</a>解析到主机上</li>
+<li>证书：使用Let's Encrypt申请证书，并自动续签。因为教育网公网80/443端口被封锁，无法使用HTTP Challenge，因此改用DNS Challenge</li>
+</ul>
+<p>首先，在主机上启动docker registry应用，该应用包括一个registry容器和一个反向代理容器。反向代理容器被用于提供HTTPS</p>
+<div class="highlight"><span class="filename">docker-compose.yaml</span><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;3&#39;</span><span class="w"></span>
+<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="nt">services</span><span class="p">:</span><span class="w"></span>
+<a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a><span class="w">  </span><span class="nt">app</span><span class="p">:</span><span class="w"></span>
+<a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;registry&#39;</span><span class="w"></span>
+<a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a><span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">registry-app</span><span class="w"></span>
+<a id="__codelineno-27-6" name="__codelineno-27-6" href="#__codelineno-27-6"></a><span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">always</span><span class="w"></span>
+<a id="__codelineno-27-7" name="__codelineno-27-7" href="#__codelineno-27-7"></a><span class="w">    </span><span class="nt">networks</span><span class="p">:</span><span class="w"></span>
+<a id="__codelineno-27-8" name="__codelineno-27-8" href="#__codelineno-27-8"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span><span class="w"></span>
+<a id="__codelineno-27-9" name="__codelineno-27-9" href="#__codelineno-27-9"></a><span class="w">    </span><span class="nt">expose</span><span class="p">:</span><span class="w"></span>
+<a id="__codelineno-27-10" name="__codelineno-27-10" href="#__codelineno-27-10"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5000</span><span class="w"></span>
+<a id="__codelineno-27-11" name="__codelineno-27-11" href="#__codelineno-27-11"></a>
+<a id="__codelineno-27-12" name="__codelineno-27-12" href="#__codelineno-27-12"></a><span class="w">  </span><span class="nt">proxy</span><span class="p">:</span><span class="w"></span>
+<a id="__codelineno-27-13" name="__codelineno-27-13" href="#__codelineno-27-13"></a><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;jc21/nginx-proxy-manager:latest&#39;</span><span class="w"></span>
+<a id="__codelineno-27-14" name="__codelineno-27-14" href="#__codelineno-27-14"></a><span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">registry-proxy</span><span class="w"></span>
+<a id="__codelineno-27-15" name="__codelineno-27-15" href="#__codelineno-27-15"></a><span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">always</span><span class="w"></span>
+<a id="__codelineno-27-16" name="__codelineno-27-16" href="#__codelineno-27-16"></a><span class="w">    </span><span class="nt">ports</span><span class="p">:</span><span class="w"></span>
+<a id="__codelineno-27-17" name="__codelineno-27-17" href="#__codelineno-27-17"></a><span class="w">      </span><span class="c1"># - &#39;15001:80&#39;</span><span class="w"></span>
+<a id="__codelineno-27-18" name="__codelineno-27-18" href="#__codelineno-27-18"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;5000:443&#39;</span><span class="w"></span>
+<a id="__codelineno-27-19" name="__codelineno-27-19" href="#__codelineno-27-19"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;8081:81&#39;</span><span class="w"></span>
+<a id="__codelineno-27-20" name="__codelineno-27-20" href="#__codelineno-27-20"></a><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span><span class="w"></span>
+<a id="__codelineno-27-21" name="__codelineno-27-21" href="#__codelineno-27-21"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./proxy-data:/data</span><span class="w"></span>
+<a id="__codelineno-27-22" name="__codelineno-27-22" href="#__codelineno-27-22"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./proxy-letsencrypt:/etc/letsencrypt</span><span class="w"></span>
+<a id="__codelineno-27-23" name="__codelineno-27-23" href="#__codelineno-27-23"></a><span class="w">    </span><span class="nt">networks</span><span class="p">:</span><span class="w"></span>
+<a id="__codelineno-27-24" name="__codelineno-27-24" href="#__codelineno-27-24"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span><span class="w"></span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="o">[</span>speit@host<span class="o">]</span> $ docker-compose up -d
+</code></pre></div>
+<p>经过一些配置，我们让<code>registry-proxy</code>代理5000端口的HTTPS请求到<code>registry-app</code></p>
+<p>查看registry的状态</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="o">[</span>speit@host<span class="o">]</span> $ curl -X GET https://registry.ice6413p.space:5000/v2/_catalog
+<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a><span class="o">{</span><span class="s2">&quot;repositories&quot;</span>:<span class="o">[]}</span>
+</code></pre></div>
+<p>比如说，@davidliyutong在不久前修复了<a href="https://github.com/mindoc-org/mindoc">mindoc</a>镜像中的一个<a href="https://github.com/mindoc-org/mindoc/issues/742">issue</a>中提出的bug. 现在他想要将重新编译的镜像上传到这个服务器</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="o">[</span>speit@host<span class="o">]</span> $ docker login https://registry.ice6413p.space:5000
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>因为registry没有配置认证，所以可以用任意账户密码登陆</p>
+</div>
+<p>打标签，推送</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="o">[</span>speit@host<span class="o">]</span> $ docker tag natrium233/mindoc-app-fix:latest registry.ice6413p.space:5000/mindoc-app-fix
+<a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a><span class="o">[</span>speit@host<span class="o">]</span> $ docker push registry.ice6413p.space:5000/mindoc-app-fix
+</code></pre></div>
+<p>重新查看</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="o">[</span>speit@host<span class="o">]</span> $ curl -X GET https://registry.ice6413p.space:5000/v2/_catalog
+<a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a><span class="o">{</span><span class="s2">&quot;repositories&quot;</span>:<span class="o">[</span><span class="s2">&quot;mindoc-app-fix&quot;</span><span class="o">]}</span>
+</code></pre></div>
+<p><img alt="Registry test" src="../img/20220424163853.png" /></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>这样的一个registry仍然是危险的：任何人都可以用任何凭据登陆。应当考虑使用<a href="https://github.com/rhasselbaum/docker-registry-ldap-proxy">docker-registry-ldap-proxy</a>类似的方案加入认证机制</p>
+</div>
+<h2 id="docker-runtime">Docker - runtime</h2>
+<p>我们使用docker提供的<a href="https://hub.docker.com/_/hello-world"><code>hello-world</code></a>镜像来测试Docker运行时</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="o">[</span>speit@host<span class="o">]</span> $ docker run hello-world
+<a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a><span class="o">[</span>speit@host<span class="o">]</span> $ docker ps -a
+</code></pre></div>
+<p><img alt="Inspect a stopped container" src="../img/20220424164656.png" /></p>
+<p>该容器运行后停止，因此<code>docker ps</code>无法查看其状态，需要添加<code>-a</code>参数</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="o">[</span>speit@host<span class="o">]</span> $ docker container run -it --rm -p <span class="m">8888</span>:80 ubuntu:focal
+<a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a><span class="o">[</span>root@ct<span class="o">]</span> $ apt update <span class="o">&amp;&amp;</span> apt install -y apache2
+<a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a><span class="o">[</span>root@ct<span class="o">]</span> $ <span class="nb">echo</span> <span class="s2">&quot;Index.html&quot;</span> &gt; /var/www/html/index.html
+<a id="__codelineno-34-4" name="__codelineno-34-4" href="#__codelineno-34-4"></a><span class="o">[</span>root@ct<span class="o">]</span> $ apache2ctl -D FOREGROUND 
+</code></pre></div>
+<p>在另一终端运行<code>ps</code>查看：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="o">[</span>speit@host<span class="o">]</span> $ ps -aux <span class="p">|</span> grep ubuntu:focal
+<a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a><span class="o">[</span>speit@host<span class="o">]</span> $ docker ps <span class="p">|</span> grep ubuntu
+</code></pre></div>
+<p><img alt="Inspect a running container" src="../img/20220424170438.png" />  </p>
+<p><img alt="Install apache2" src="../img/20220424165929.png" /></p>
+<p>用curl拉取网页内容</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="o">[</span>speit@host<span class="o">]</span> $ curl localhost:8888
+</code></pre></div>
+<p><img alt="Webserver test with curl" src="../img/20220424171958.png" /></p>
+<h2 id="docker-volume">Docker - volume</h2>
+<p>我们创建vol1的volume，并对其进行一系列操作</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="o">[</span>speit@host<span class="o">]</span> $ docker volume create vol1
+<a id="__codelineno-37-2" name="__codelineno-37-2" href="#__codelineno-37-2"></a>vol1
+<a id="__codelineno-37-3" name="__codelineno-37-3" href="#__codelineno-37-3"></a><span class="o">[</span>speit@host<span class="o">]</span> $ docker run -it --rm -v vol1:/data ubuntu:focal /bin/bash
+<a id="__codelineno-37-4" name="__codelineno-37-4" href="#__codelineno-37-4"></a><span class="o">[</span>root@ct<span class="o">]</span> $ ls /data
+<a id="__codelineno-37-5" name="__codelineno-37-5" href="#__codelineno-37-5"></a><span class="o">[</span>root@ct<span class="o">]</span> $ touch /data/xxx
+<a id="__codelineno-37-6" name="__codelineno-37-6" href="#__codelineno-37-6"></a><span class="o">[</span>root@ct<span class="o">]</span> $ <span class="nb">echo</span> yyy &gt; /data/xxx
+</code></pre></div>
+<p><img alt="Volume terminal1" src="../img/20220424165708.png" /></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a><span class="o">[</span>speit@host<span class="o">]</span> $ docker run -it --rm -v vol1:/data ubuntu:focal /bin/bash
+<a id="__codelineno-38-2" name="__codelineno-38-2" href="#__codelineno-38-2"></a><span class="o">[</span>root@ct<span class="o">]</span> $ cat /data/xxx
+<a id="__codelineno-38-3" name="__codelineno-38-3" href="#__codelineno-38-3"></a>yyy
+</code></pre></div>
+<p><img alt="Volume terminal2" src="../img/20220424165721.png" /></p>
+<p>实验结束，删除volume</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a><span class="o">[</span>speit@host<span class="o">]</span> $ docker volume remove vol1
+</code></pre></div>
+<h2 id="docker-network">docker - network</h2>
+<p>我们创建名为<code>net1</code>的网络进行实验</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a>docker network create net1
+<a id="__codelineno-40-2" name="__codelineno-40-2" href="#__codelineno-40-2"></a><span class="o">[</span>speit@host<span class="o">]</span> $ docker run --name ct1 -it -d --net<span class="o">=</span>net1 natrium233/focal:with-ping
+<a id="__codelineno-40-3" name="__codelineno-40-3" href="#__codelineno-40-3"></a><span class="o">[</span>speit@host<span class="o">]</span> $ docker run --name ct2 -it --net<span class="o">=</span>net1 natrium233/focal:with-ping /bin/bash
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a><span class="o">[</span>speit@ct2<span class="o">]</span> $ ping
+</code></pre></div>
+<p><img alt="Ping test" src="../img/20220424191544.png" /></p>
+<p>实验结束后删除容器和网络</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a><span class="o">[</span>speit@host<span class="o">]</span> $ docker stop ct1 ct2 <span class="o">&amp;&amp;</span> docker rm ct1 ct2 <span class="o">&amp;&amp;</span> docker network remove net1
+</code></pre></div>
+<h2 id="dockerfile">dockerfile</h2>
+<p>测试环境变量</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a><span class="o">[</span>speit@host<span class="o">]</span> $ docker build -t img1 -f Dockerfile-env .
+<a id="__codelineno-43-2" name="__codelineno-43-2" href="#__codelineno-43-2"></a><span class="o">[</span>speit@host<span class="o">]</span> $ docker run --name ct1 --rm img1
+<a id="__codelineno-43-3" name="__codelineno-43-3" href="#__codelineno-43-3"></a><span class="o">[</span>speit@host<span class="o">]</span> $ docker run --name ct2 --rm -e <span class="nv">MSG</span><span class="o">=</span><span class="m">111</span> img1
+</code></pre></div>
+<p><img alt="Shen Env" src="../img/20220424194523.png" /></p>
+<p>测试python镜像</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a><span class="o">[</span>speit@host<span class="o">]</span> $ docker build -t img1 -f Dockerfile-env-python .
+<a id="__codelineno-44-2" name="__codelineno-44-2" href="#__codelineno-44-2"></a><span class="o">[</span>speit@host<span class="o">]</span> $ docker run --name ct1 --rm img1 
+<a id="__codelineno-44-3" name="__codelineno-44-3" href="#__codelineno-44-3"></a><span class="o">[</span>speit@host<span class="o">]</span> $ docker run --name ct2 --rm -e <span class="nv">MSG1</span><span class="o">=</span>aaa -e <span class="nv">MSG2</span><span class="o">=</span>bbb img1
+</code></pre></div>
+<p><img alt="Python Argparse Env" src="../img/20220424194820.png" /></p>
+<p>进阶测试</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a><span class="o">[</span>speit@host<span class="o">]</span> $ docker build -t img1 -f Dockerfile-env-python2 .
+<a id="__codelineno-45-2" name="__codelineno-45-2" href="#__codelineno-45-2"></a><span class="o">[</span>speit@host<span class="o">]</span> $ docker run --name ct2 --rm -v <span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>:/workspace img1
+<a id="__codelineno-45-3" name="__codelineno-45-3" href="#__codelineno-45-3"></a><span class="o">[</span>speit@host<span class="o">]</span> $ docker run --name ct2 --rm -v <span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>:/workspace -e <span class="nv">APP</span><span class="o">=</span>/workspace/app2.py img1
+</code></pre></div>
+<p><img alt="Same Image for Different Scripts" src="../img/20220424194917.png" /></p>
+<p>测试搭建Apache2 web服务</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a><span class="o">[</span>speit@host<span class="o">]</span> $ docker image build -t apache2-demo .
+<a id="__codelineno-46-2" name="__codelineno-46-2" href="#__codelineno-46-2"></a><span class="o">[</span>speit@host<span class="o">]</span> $ docker run -d -p <span class="m">8885</span>:80 apache2-demo
+</code></pre></div>
+<p><img alt="Create apache container" src="../img/20220424201642.png" />  </p>
+<p>浏览器访问<a href="http://localhost:8885/index.php">http://localhost:8885/index.php</a></p>
+<p><img alt="Browser view" src="../img/20220424201720.png" /></p>
+<h2 id="docker-lab">docker - lab</h2>
+<h3 id="wordpress">Wordpress</h3>
+<p>我们在一台云主机上部署wordpress应用</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a><span class="o">[</span>speit@host<span class="o">]</span> $ docker network create wordpress
+<a id="__codelineno-47-2" name="__codelineno-47-2" href="#__codelineno-47-2"></a><span class="o">[</span>speit@host<span class="o">]</span> $ docker volume create mysql wordpress
+<a id="__codelineno-47-3" name="__codelineno-47-3" href="#__codelineno-47-3"></a><span class="o">[</span>speit@host<span class="o">]</span> $ docker image pull wordpress:4.9.6 mysql:5.7
+</code></pre></div>
+<p>我们使用docker-compose部署，这样管理起来较为简便</p>
+<div class="highlight"><span class="filename">docker-compose.yaml</span><pre><span></span><code><a id="__codelineno-48-1" name="__codelineno-48-1" href="#__codelineno-48-1"></a><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;3.3&#39;</span><span class="w"></span>
+<a id="__codelineno-48-2" name="__codelineno-48-2" href="#__codelineno-48-2"></a>
+<a id="__codelineno-48-3" name="__codelineno-48-3" href="#__codelineno-48-3"></a><span class="nt">services</span><span class="p">:</span><span class="w"></span>
+<a id="__codelineno-48-4" name="__codelineno-48-4" href="#__codelineno-48-4"></a><span class="w">  </span><span class="nt">db</span><span class="p">:</span><span class="w"></span>
+<a id="__codelineno-48-5" name="__codelineno-48-5" href="#__codelineno-48-5"></a><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mysql:5.7</span><span class="w"></span>
+<a id="__codelineno-48-6" name="__codelineno-48-6" href="#__codelineno-48-6"></a><span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wordpress-db</span><span class="w"></span>
+<a id="__codelineno-48-7" name="__codelineno-48-7" href="#__codelineno-48-7"></a><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span><span class="w"></span>
+<a id="__codelineno-48-8" name="__codelineno-48-8" href="#__codelineno-48-8"></a><span class="w">       </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">db:/var/lib/mysql</span><span class="w"></span>
+<a id="__codelineno-48-9" name="__codelineno-48-9" href="#__codelineno-48-9"></a><span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">always</span><span class="w"></span>
+<a id="__codelineno-48-10" name="__codelineno-48-10" href="#__codelineno-48-10"></a><span class="w">    </span><span class="nt">networks</span><span class="p">:</span><span class="w"></span>
+<a id="__codelineno-48-11" name="__codelineno-48-11" href="#__codelineno-48-11"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span><span class="w"></span>
+<a id="__codelineno-48-12" name="__codelineno-48-12" href="#__codelineno-48-12"></a><span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w"></span>
+<a id="__codelineno-48-13" name="__codelineno-48-13" href="#__codelineno-48-13"></a><span class="w">      </span><span class="nt">MYSQL_ROOT_PASSWORD</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">P@ssw0rd</span><span class="w"></span>
+<a id="__codelineno-48-14" name="__codelineno-48-14" href="#__codelineno-48-14"></a><span class="w">      </span><span class="nt">MYSQL_DATABASE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wordpress</span><span class="w"></span>
+<a id="__codelineno-48-15" name="__codelineno-48-15" href="#__codelineno-48-15"></a>
+<a id="__codelineno-48-16" name="__codelineno-48-16" href="#__codelineno-48-16"></a><span class="w">  </span><span class="nt">app</span><span class="p">:</span><span class="w"></span>
+<a id="__codelineno-48-17" name="__codelineno-48-17" href="#__codelineno-48-17"></a><span class="w">    </span><span class="nt">depends_on</span><span class="p">:</span><span class="w"></span>
+<a id="__codelineno-48-18" name="__codelineno-48-18" href="#__codelineno-48-18"></a><span class="w">       </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">db</span><span class="w"></span>
+<a id="__codelineno-48-19" name="__codelineno-48-19" href="#__codelineno-48-19"></a><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wordpress:5.9.3</span><span class="w"></span>
+<a id="__codelineno-48-20" name="__codelineno-48-20" href="#__codelineno-48-20"></a><span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wordpress-app</span><span class="w"></span>
+<a id="__codelineno-48-21" name="__codelineno-48-21" href="#__codelineno-48-21"></a><span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">always</span><span class="w"></span>
+<a id="__codelineno-48-22" name="__codelineno-48-22" href="#__codelineno-48-22"></a><span class="w">    </span><span class="nt">networks</span><span class="p">:</span><span class="w"></span>
+<a id="__codelineno-48-23" name="__codelineno-48-23" href="#__codelineno-48-23"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">proxy_net</span><span class="w"></span>
+<a id="__codelineno-48-24" name="__codelineno-48-24" href="#__codelineno-48-24"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span><span class="w"></span>
+<a id="__codelineno-48-25" name="__codelineno-48-25" href="#__codelineno-48-25"></a><span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w"></span>
+<a id="__codelineno-48-26" name="__codelineno-48-26" href="#__codelineno-48-26"></a><span class="w">      </span><span class="nt">WORDPRESS_DB_HOST</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wordpress-db</span><span class="w"></span>
+<a id="__codelineno-48-27" name="__codelineno-48-27" href="#__codelineno-48-27"></a><span class="w">      </span><span class="nt">WORDPRESS_DB_PASSWORD</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">P@ssw0rd</span><span class="w"></span>
+<a id="__codelineno-48-28" name="__codelineno-48-28" href="#__codelineno-48-28"></a><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span><span class="w"></span>
+<a id="__codelineno-48-29" name="__codelineno-48-29" href="#__codelineno-48-29"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wordpress:/var/www/html</span><span class="w"></span>
+<a id="__codelineno-48-30" name="__codelineno-48-30" href="#__codelineno-48-30"></a>
+<a id="__codelineno-48-31" name="__codelineno-48-31" href="#__codelineno-48-31"></a><span class="nt">networks</span><span class="p">:</span><span class="w"></span>
+<a id="__codelineno-48-32" name="__codelineno-48-32" href="#__codelineno-48-32"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">proxy_net</span><span class="p">:</span><span class="w"></span>
+<a id="__codelineno-48-33" name="__codelineno-48-33" href="#__codelineno-48-33"></a><span class="w">      </span><span class="nt">external</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<a id="__codelineno-48-34" name="__codelineno-48-34" href="#__codelineno-48-34"></a>
+<a id="__codelineno-48-35" name="__codelineno-48-35" href="#__codelineno-48-35"></a><span class="nt">volumes</span><span class="p">:</span><span class="w"></span>
+<a id="__codelineno-48-36" name="__codelineno-48-36" href="#__codelineno-48-36"></a><span class="w">    </span><span class="nt">db</span><span class="p">:</span><span class="w"></span>
+<a id="__codelineno-48-37" name="__codelineno-48-37" href="#__codelineno-48-37"></a><span class="w">    </span><span class="nt">wordpress</span><span class="p">:</span><span class="w"></span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>proxy_net 为nginx proxy所在的网络，我们通过nginx反向代理对外提供wordpress服务，在此不再赘述</p>
+<p>default为<code>docker-compose</code>创建的默认网络</p>
+</div>
+<p>搭建的站点预览如下</p>
+<p><img alt="Wordpress" src="../img/20220424220802.png" /></p>
+<h3 id="python-server">Python server</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-49-1" name="__codelineno-49-1" href="#__codelineno-49-1"></a><span class="o">[</span>speit@host<span class="o">]</span> $ docker network create python-server <span class="c1"># create a backend network</span>
+<a id="__codelineno-49-2" name="__codelineno-49-2" href="#__codelineno-49-2"></a><span class="o">[</span>speit@host<span class="o">]</span> $ docker volume create mysql <span class="c1"># create a volume</span>
+<a id="__codelineno-49-3" name="__codelineno-49-3" href="#__codelineno-49-3"></a><span class="o">[</span>speit@host<span class="o">]</span> $ docker image pull mysql:5.7 
+<a id="__codelineno-49-4" name="__codelineno-49-4" href="#__codelineno-49-4"></a><span class="o">[</span>speit@host<span class="o">]</span> $ docker container run --name mysql -d --net python-server -v mysql:/var/lib/mysql -e <span class="nv">MYSQL_ROOT_PASSWORD</span><span class="o">=</span>P@ssw0rd  mysql:5.7
+</code></pre></div>
+<p>这些命令将会创建一个名为mysql的容器（通过<code>--name mysql</code>），并将mysql数据卷映射到容器内的/var/lib/mysql/</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>通过<code>docker network inspect python-server | grep IPv4</code>，我们可以获取到<code>mysql</code>容器的地址为<code>192.168.32.2</code>，</p>
+<p><img alt="Inspect network" src="../img/20220424233924.png" /></p>
+</div>
+<p>用数据库的地址连接数据库</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-50-1" name="__codelineno-50-1" href="#__codelineno-50-1"></a><span class="o">[</span>speit@host<span class="o">]</span> $ mysql -h <span class="m">192</span>.168.32.2 -u root -p 
+<a id="__codelineno-50-2" name="__codelineno-50-2" href="#__codelineno-50-2"></a>Password:
+</code></pre></div>
+<p>交互式地键入密码，然后连接MySQL数据库。</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>有些情况下，需要在MySQL客户端执行两句MySQL查询将root@localhost授权，否则会报错</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-51-1" name="__codelineno-51-1" href="#__codelineno-51-1"></a><span class="n">mysql</span><span class="o">&gt;</span><span class="w"> </span><span class="k">GRANT</span><span class="w"> </span><span class="k">ALL</span><span class="w"> </span><span class="k">PRIVILEGES</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="o">*</span><span class="p">.</span><span class="o">*</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="s1">&#39;root&#39;</span><span class="o">@</span><span class="s1">&#39;localhost&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-51-2" name="__codelineno-51-2" href="#__codelineno-51-2"></a><span class="n">mysql</span><span class="o">&gt;</span><span class="w"> </span><span class="n">FLUSH</span><span class="w"> </span><span class="k">PRIVILEGES</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
+</div>
+<p><img alt="Creating MySQL server" src="../img/20220424233029.png" /></p>
+<p>编译python-server镜像</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-52-1" name="__codelineno-52-1" href="#__codelineno-52-1"></a><span class="o">[</span>speit@host<span class="o">]</span> $ <span class="nb">cd</span> docker
+<a id="__codelineno-52-2" name="__codelineno-52-2" href="#__codelineno-52-2"></a><span class="o">[</span>speit@host/docker<span class="o">]</span> $ docker build -t python-server:0.1 . <span class="p">&amp;</span>&gt; /dev/null
+<a id="__codelineno-52-3" name="__codelineno-52-3" href="#__codelineno-52-3"></a><span class="o">[</span>speit@host/docker<span class="o">]</span> $ docker image ls <span class="p">|</span> grep python-server
+<a id="__codelineno-52-4" name="__codelineno-52-4" href="#__codelineno-52-4"></a><span class="o">[</span>speit@host<span class="o">]</span> $ <span class="nb">cd</span> ..
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>我们通过<code>&amp;&gt; /deb/null</code>忽略输出</p>
+</div>
+<p>启动Python服务器</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-53-1" name="__codelineno-53-1" href="#__codelineno-53-1"></a><span class="o">[</span>speit@host<span class="o">]</span> $ docker container run --name python-server -d --net python-server -p <span class="m">6666</span>:8888 -e <span class="nv">MYSQL_HOST</span><span class="o">=</span>mysql python-server:0.1
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-54-1" name="__codelineno-54-1" href="#__codelineno-54-1"></a><span class="o">[</span>speit@host<span class="o">]</span> $ curl localhost:6666
+</code></pre></div>
+<p><img alt="Server error" src="../img/20220424225534.png" /></p>
+<p>服务器内部错误，这是因为没有创建MySQL表。我们通过命令初始化表</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-55-1" name="__codelineno-55-1" href="#__codelineno-55-1"></a><span class="o">[</span>speit@host<span class="o">]</span> $ mysql -u root -p -h <span class="m">192</span>.168.32.2 &lt; db1_tbl1.sql
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>这步操作完成的工作是启动mysql客户端，连接到位于<code>192.168.32.2</code>的主机，并导入<code>db1_tbl1.sql</code>文件。该文件存在于宿主机中，因此命令需要在宿主机中执行</p>
+<p>也可以将该文件用<code>docker cp</code>命令拷贝到容器内，然后使用容器内的客户端执行</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-56-1" name="__codelineno-56-1" href="#__codelineno-56-1"></a><span class="o">[</span>speit@host<span class="o">]</span> $ docker cp db1_tbl1.sql <span class="nv">$MYSQL_CT_ID</span>:/var/db1_tbl1.sql <span class="c1"># 拷贝到容器内的/var/db1_tbl1.sql</span>
+<a id="__codelineno-56-2" name="__codelineno-56-2" href="#__codelineno-56-2"></a><span class="o">[</span>speit@host<span class="o">]</span> $ docker <span class="nb">exec</span> -it <span class="nv">$MYSQL_CT_ID</span> /bin/bash
+<a id="__codelineno-56-3" name="__codelineno-56-3" href="#__codelineno-56-3"></a><span class="o">[</span>root@ct<span class="o">]</span> $ mysql -u root -p &lt; /var/db1_tbl1.sql <span class="c1"># 路径与之前保持一致</span>
+<a id="__codelineno-56-4" name="__codelineno-56-4" href="#__codelineno-56-4"></a>Password:
+</code></pre></div>
+<p>其中<code>$MYSQL_CT_ID</code>为容器的ID</p>
+</div>
+<p>检查web server 的状态，发现其正常工作了</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-57-1" name="__codelineno-57-1" href="#__codelineno-57-1"></a><span class="o">[</span>speit@host<span class="o">]</span> $ curl localhost:6666
+</code></pre></div>
+<p><img alt="Server success" src="../img/20220424233212.png" /></p>
+<h3 id="frontback-end">Front/Back end</h3>
+<p>编译镜像</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-58-1" name="__codelineno-58-1" href="#__codelineno-58-1"></a><span class="o">[</span>speit@host<span class="o">]</span> $ docker image build -t backend backend <span class="p">&amp;</span>&gt;/dev/null
+<a id="__codelineno-58-2" name="__codelineno-58-2" href="#__codelineno-58-2"></a><span class="o">[</span>speit@host<span class="o">]</span> $ docker image build -t frontend frontend <span class="p">&amp;</span>&gt;/dev/null
+</code></pre></div>
+<p>创建网络</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-59-1" name="__codelineno-59-1" href="#__codelineno-59-1"></a><span class="o">[</span>speit@host<span class="o">]</span> $ docker network create frontbackend
+</code></pre></div>
+<p>启动容器</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-60-1" name="__codelineno-60-1" href="#__codelineno-60-1"></a><span class="o">[</span>speit@host<span class="o">]</span> $ docker container run --name backend -d --net<span class="o">=</span>frontbackend backend
+<a id="__codelineno-60-2" name="__codelineno-60-2" href="#__codelineno-60-2"></a><span class="o">[</span>speit@host<span class="o">]</span> $ docker container run --name frontend -d --net<span class="o">=</span>frontbackend -p <span class="m">6666</span>:8888 frontend
+</code></pre></div>
+<p>访问前端</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-61-1" name="__codelineno-61-1" href="#__codelineno-61-1"></a><span class="o">[</span>speit@host<span class="o">]</span> $ curl localhost:6666 <span class="c1"># type twice</span>
+</code></pre></div>
+<p>修改  <code>backend</code>中的<code>/data/input.txt</code> 文件:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-62-1" name="__codelineno-62-1" href="#__codelineno-62-1"></a><span class="o">[</span>speit@host<span class="o">]</span> $ curl localhost:6666 <span class="c1">#  type twice to see the update</span>
+</code></pre></div>
+<p><img alt="Front/back end experiment" src="../img/20220424235919.png" /></p>
+<h2 id="docker-in-docker">Docker in docker</h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>给出的例子有误，需要添加一行<code>RUN chmod +x /data/init.sh</code></p>
+<div class="highlight"><span class="filename">Dockerfile</span><pre><span></span><code><a id="__codelineno-63-1" name="__codelineno-63-1" href="#__codelineno-63-1"></a>FROM centos:7
+<a id="__codelineno-63-2" name="__codelineno-63-2" href="#__codelineno-63-2"></a>
+<a id="__codelineno-63-3" name="__codelineno-63-3" href="#__codelineno-63-3"></a>RUN yum update -y <span class="se">\</span>
+<a id="__codelineno-63-4" name="__codelineno-63-4" href="#__codelineno-63-4"></a>    <span class="o">&amp;&amp;</span> yum install -y iptables <span class="se">\</span>
+<a id="__codelineno-63-5" name="__codelineno-63-5" href="#__codelineno-63-5"></a>    <span class="o">&amp;&amp;</span> yum clean all
+<a id="__codelineno-63-6" name="__codelineno-63-6" href="#__codelineno-63-6"></a>
+<a id="__codelineno-63-7" name="__codelineno-63-7" href="#__codelineno-63-7"></a>RUN mkdir -p /data <span class="o">&amp;&amp;</span> groupadd docker
+<a id="__codelineno-63-8" name="__codelineno-63-8" href="#__codelineno-63-8"></a>ADD <span class="o">[</span><span class="s2">&quot;./files/docker.tar.xz&quot;</span>, <span class="s2">&quot;/usr/local/bin/&quot;</span><span class="o">]</span>
+<a id="__codelineno-63-9" name="__codelineno-63-9" href="#__codelineno-63-9"></a>COPY <span class="o">[</span><span class="s2">&quot;./scripts/init.sh&quot;</span>, <span class="s2">&quot;/data/init.sh&quot;</span><span class="o">]</span>
+<a id="__codelineno-63-10" name="__codelineno-63-10" href="#__codelineno-63-10"></a>RUN chmod +x /data/init.sh
+<a id="__codelineno-63-11" name="__codelineno-63-11" href="#__codelineno-63-11"></a>
+<a id="__codelineno-63-12" name="__codelineno-63-12" href="#__codelineno-63-12"></a>CMD <span class="o">[</span><span class="s2">&quot;/data/init.sh&quot;</span><span class="o">]</span>
+</code></pre></div>
+</div>
+<p><img alt="Docker in docker is running" src="../img/20220425002928.png" /></p>
+<p>容器内的docker版本和宿主机的不同，并且可以执行docker命令</p>
+<p><img alt="Docker in docker is working" src="../img/20220425182628.png" /></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>一般不推荐这样使用，除非是为了本地的持续集成，例如在jenkins容器内运行docker命令来构建镜像</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Dood是更为推荐的做法：在容器内安装docker客户端，实际执行交给宿主机的docker-engine完成</p>
+</div>
+<h2 id="docker-compose">docker-compose</h2>
+<p>修改<code>docker-compose.yml</code>：</p>
+<div class="highlight"><span class="filename">docker-compose.yaml</span><pre><span></span><code><a id="__codelineno-64-1" name="__codelineno-64-1" href="#__codelineno-64-1"></a><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;2&#39;</span><span class="w"></span>
+<a id="__codelineno-64-2" name="__codelineno-64-2" href="#__codelineno-64-2"></a><span class="nt">services</span><span class="p">:</span><span class="w"></span>
+<a id="__codelineno-64-3" name="__codelineno-64-3" href="#__codelineno-64-3"></a><span class="w">  </span><span class="nt">redis</span><span class="p">:</span><span class="w"></span>
+<a id="__codelineno-64-4" name="__codelineno-64-4" href="#__codelineno-64-4"></a><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">redis:alpine</span><span class="w"></span>
+<a id="__codelineno-64-5" name="__codelineno-64-5" href="#__codelineno-64-5"></a>
+<a id="__codelineno-64-6" name="__codelineno-64-6" href="#__codelineno-64-6"></a><span class="w">  </span><span class="nt">web</span><span class="p">:</span><span class="w"></span>
+<a id="__codelineno-64-7" name="__codelineno-64-7" href="#__codelineno-64-7"></a><span class="w">    </span><span class="nt">depends_on</span><span class="p">:</span><span class="w"></span>
+<a id="__codelineno-64-8" name="__codelineno-64-8" href="#__codelineno-64-8"></a><span class="w">       </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">redis</span><span class="w"></span>
+<a id="__codelineno-64-9" name="__codelineno-64-9" href="#__codelineno-64-9"></a><span class="w">    </span><span class="nt">build</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./docker</span><span class="w"></span>
+<a id="__codelineno-64-10" name="__codelineno-64-10" href="#__codelineno-64-10"></a><span class="w">    </span><span class="nt">ports</span><span class="p">:</span><span class="w"></span>
+<a id="__codelineno-64-11" name="__codelineno-64-11" href="#__codelineno-64-11"></a><span class="w">     </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8000:5000</span><span class="w"></span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>5000端口被Docker Registry占用，这里改到8000端口</p>
+</div>
+<p>导航至<code>docker-compose.yml</code>所在目录，执行</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-65-1" name="__codelineno-65-1" href="#__codelineno-65-1"></a><span class="o">[</span>speit@host<span class="o">]</span> $ docker-compose up --remove-orphans -d
+</code></pre></div>
+<p>检查 <a href="http://localhost:8000">http://localhost:8000</a></p>
+<p><img alt="The docker-compose service" src="../img/20220425001100.png" /></p>
+
+              
+            </article>
+            
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-top--hidden md-icon" data-md-component="top">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../cluster/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Cluster" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Cluster
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../objects/" class="md-footer__link md-footer__link--next" aria-label="Next: Objects" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Objects
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.tabs.link", "navigation.tracking", "navigation.instant", "navigation.tabs", "navigation.indexes", "navigation.top", "toc.integrate"], "search": "../assets/javascripts/workers/search.b028fd86.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.0f659f14.min.js"></script>
+      
+        <script src="../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
